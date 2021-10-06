@@ -142,8 +142,8 @@ let style (style : style) content =
   match style with
   | `Bold -> string "**" ++ (content ++ str "**")
   | `Italic | `Emphasis -> string "_" ++ (content ++ str "_")
-  | `Superscript -> string "<sup>" ++ content
-  | `Subscript -> string "<sub>" ++ content
+  | `Superscript -> string "<sup>" ++ content ++ string "</sup>"
+  | `Subscript -> string "<sub>" ++ content ++ string "</sub>"
 
 let make_hashes n = String.make n '#'
 
@@ -197,7 +197,10 @@ and inline (l : Inline.t) nbsp =
             | [] -> noop
             | i :: rest ->
                 (match i.desc with
-                | Text _ -> make_link content href
+                | Text _ ->
+                    open_sq_bracket ++ continue content ++ close_sq_bracket
+                    ++ open_parenthesis ++ string href ++ close_parenthesis
+                    ++ continue rest
                 | _ -> continue content ++ continue rest)
                 ++ continue rest)
             (continue content ++ continue rest)

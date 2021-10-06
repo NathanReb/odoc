@@ -36,7 +36,7 @@ Parts of a longer paragraph that can be considered alone can also have headings.
 
 # Styling
 
-This paragraph has some styled elements: **bold** and _italic_, **_bold italic_**, _emphasis_, __emphasis_ within emphasis_, **_bold italic_**, super<sup>script, sub<sub>script. The line spacing should be enough for superscripts and subscripts not to look odd.
+This paragraph has some styled elements: **bold** and _italic_, **_bold italic_**, _emphasis_, __emphasis_ within emphasis_, **_bold italic_**, super<sup>script</sup>, sub<sub>script</sub>. The line spacing should be enough for superscripts and subscripts not to look odd.
 Note: _In italics _emphasis_ is rendered as normal text while _emphasis _in_ emphasis_ is rendered in italics._ _It also work the same in links in italics with _emphasis _in_ emphasis_._
  `` code ``  is a different kind of markup that doesn't allow nested markup.
 It's possible for two markup elements to appear **next** _to_ each other and have a space, and appear **next**_to_ each other with no space. It doesn't matter **how** _much_ space it was in the source: in this sentence, it was two space characters. And in this one, there is **a** _newline_.
@@ -45,8 +45,8 @@ Code can appear **inside  `` other ``  markup**. Its display shouldn't be affect
 
 # Links and references
 
-This is a link. It sends you to the top of this page. Links can have markup inside them: **bold**, _italics_, _emphasis_, super<sup>script, sub<sub>script, and  `` code `` . Links can also be nested _inside_ markup. Links cannot be nested inside each other. This link has no replacement text: #. The text is filled in by odoc. This is a shorthand link: #. The text is also filled in by odoc in this case.
-This is a reference to  `` foo `` . References can have replacement text: the value foo. Except for the special lookup support, references are pretty much just like links. The replacement text can have nested styles: **bold**, _italic_, _emphasis_, super<sup>script, sub<sub>script, and  `` code `` . It's also possible to surround a reference in a style: ** `` foo `` **. References can't be nested inside references, and links and references can't be nested inside each other.
+This is a link. It sends you to the top of this page. Links can have markup inside them: **bold**, _italics_, _emphasis_, super<sup>script</sup>, sub<sub>script</sub>, and  `` code `` . Links can also be nested _inside_ markup. Links cannot be nested inside each other. This link has no replacement text: #. The text is filled in by odoc. This is a shorthand link: #. The text is also filled in by odoc in this case.
+This is a reference to  `` foo `` . References can have replacement text: the value foo. Except for the special lookup support, references are pretty much just like links. The replacement text can have nested styles: **bold**, _italic_, _emphasis_, super<sup>script</sup>, sub<sub>script</sub>, and  `` code `` . It's also possible to surround a reference in a style: ** `` foo `` **. References can't be nested inside references, and links and references can't be nested inside each other.
 
 # Preformatted text
 
@@ -157,7 +157,7 @@ Each comment can end with zero or more tags. Here are some examples:
 
 
 
-@before 1.0 : it was in b<sup>et<sub>a
+@before 1.0 : it was in b<sup>e</sup>t<sub>a</sub>
 
 
 
@@ -166,7 +166,7 @@ Each comment can end with zero or more tags. Here are some examples:
 
 ###### val foo : unit
 
-Comments in structure items **support** _markup_, t<sup>o<sub>o.
+Comments in structure items **support** _markup_, t<sup>o</sup><sub>o</sub>.
 Some modules to support references.
 ###### module X : sig
 ###### end

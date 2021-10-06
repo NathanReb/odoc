@@ -45,8 +45,8 @@ Here is an index table of  `` Empty ``  modules:
 @ `` EmptyAlias ``  : A plain module alias of  `` Empty `` 
 
 Odoc doesn't support  `` {!indexlist} `` .
-Here is some superscript: x<sup>2
-Here is some subscript: x<sub>0
+Here is some superscript: x<sup>2</sup>
+Here is some subscript: x<sub>0</sub>
 Here are some escaped brackets: { [ @ ] }
 Here is some _emphasis_  `` followed by code `` .
 An unassociated comment
