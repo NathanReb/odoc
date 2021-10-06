@@ -22,3 +22,14 @@ type name = {fname : string; (** first name *) lname: string}
 
 (** {{:href} {foo_bar} } *)
 (** {{:href} **barz** } *)
+
+(** {v
+verbatim
+text
+v} *)
+
+(** {ul
+     {- p1
+
+        p2}
+    } *)

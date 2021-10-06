@@ -23,8 +23,6 @@ module Markup : sig
 
   val concat : t list -> t
 
-  val inline' : string list -> t
-
   val block' : t list -> t
 
   val list : ?sep:t -> t list -> t
@@ -94,8 +92,6 @@ end = struct
   let string s = String s
 
   let block' ts = Block ts
-
-  let inline' l = List.map (fun s -> string s) l |> concat
 
   let str fmt = Format.ksprintf (fun s -> string s) fmt
 
@@ -240,7 +236,9 @@ let rec block (l : Block.t) nbsp =
           list ~sep:break (List.map f descrs) ++ continue rest
       | Source content -> source_code content nbsp ++ continue rest
       | Verbatim content ->
-          space ++ space ++ space ++ space ++ str "%s" content ++ continue rest
+          (* TODO:*)
+          space ++ space ++ space ++ space ++ str "%s" content ++ break
+          ++ continue rest
       | Raw_markup t -> raw_markup t ++ continue rest)
 
 let heading { Heading.label; level; title } nbsp =
@@ -361,6 +359,8 @@ let on_sub subp =
 let page { Page.header; items; url; _ } =
   let header = Shift.compute ~on_sub header in
   let items = Shift.compute ~on_sub items in
+  let inline' l = List.map (fun s -> string s) l |> concat in
+  (*TODO: inline `block'`. *)
   block'
     ([ inline' (Link.for_printing url) ]
     @ [ item (str "") header ++ item (str "") items ])

@@ -48,6 +48,11 @@
   test two foo
    `` foo_bar `` 
   **barz**
+      verbatim
+  text
+  - p1
+  p2
+  
   $ odoc markdown-generate test.odocl -o markdown --generate-links
   $ cat markdown/Test.md
   Test
@@ -102,6 +107,11 @@
   [test two foo](href)
   [foo_bar](href)
   [**barz**](href)
+      verbatim
+  text
+  - p1
+  p2
+  
 
   $ odoc markdown-generate test.odocl -o markdown --md-flavour=pandoc
   $ cat markdown/Test.md
@@ -147,3 +157,8 @@
   test two foo
    `` foo_bar `` 
   **barz**
+      verbatim
+  text
+  - p1
+  p2
+  

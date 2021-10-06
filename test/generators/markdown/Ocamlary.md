@@ -34,8 +34,10 @@ David Sheets is the author.
 
 You may find more information about this HTML documentation renderer at github.com/dsheets/ocamlary.
 This is some verbatim text:
-    verbatimThis is some verbatim text:
-    [][df[]]}}Here is some raw LaTeX: 
+    verbatim
+This is some verbatim text:
+    [][df[]]}}
+Here is some raw LaTeX: 
 Here is an index table of  `` Empty ``  modules:
 
 @ `` Empty ``  : A plain, empty module
