@@ -193,16 +193,7 @@ and inline (l : Inline.t) nbsp =
       | Linebreak -> break ++ continue rest
       | Link (href, content) ->
           cond
-            (match content with
-            | [] -> noop
-            | i :: rest ->
-                (match i.desc with
-                | Text _ ->
-                    open_sq_bracket ++ continue content ++ close_sq_bracket
-                    ++ open_parenthesis ++ string href ++ close_parenthesis
-                    ++ continue rest
-                | _ -> continue content ++ continue rest)
-                ++ continue rest)
+            (make_link content href ++ continue rest)
             (continue content ++ continue rest)
       | InternalLink (Resolved (link, content)) ->
           cond

@@ -1,5 +1,8 @@
   $ ocamlc -c -bin-annot test.mli
   $ odoc compile test.cmti
+  File "test.mli", line 23, characters 13-22:
+  '{foo_bar}': bad markup.
+  Suggestion: did you mean '{!foo_bar}' or '[foo_bar]'?
   $ odoc link test.odoc
   $ odoc markdown-generate test.odocl -o markdown
   $ cat markdown/Test.md
@@ -40,6 +43,11 @@
   ## Label
   ---
   
+  test_two
+  **test**
+  test two foo
+   `` foo_bar `` 
+  **barz**
   $ odoc markdown-generate test.odocl -o markdown --generate-links
   $ cat markdown/Test.md
   Test
@@ -89,6 +97,11 @@
   ## Label
   ---
   
+  [test_two](href)
+  [**test**](href)
+  [test two foo](href)
+  [foo_bar](href)
+  [**barz**](href)
 
   $ odoc markdown-generate test.odocl -o markdown --md-flavour=pandoc
   $ cat markdown/Test.md
@@ -129,3 +142,8 @@
   ## Label {#foo}
   ---
   
+  test_two
+  **test**
+  test two foo
+   `` foo_bar `` 
+  **barz**

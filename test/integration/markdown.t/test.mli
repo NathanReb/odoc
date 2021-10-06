@@ -14,5 +14,11 @@ type name = {fname : string; (** first name *) lname: string}
 
 (** {2:foo Label} *)
 
+(** {{:href} test_two } *)
 
 (** {{:href} {b test}} *)
+
+(** {{:href} test two foo } *)
+
+(** {{:href} {foo_bar} } *)
+(** {{:href} **barz** } *)
