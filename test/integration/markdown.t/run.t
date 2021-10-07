@@ -20,6 +20,7 @@
   ######     type x
   
   doc for x
+  
   ######     module type Y = sig
   
   ######         type y = y'
@@ -35,6 +36,7 @@
   
   first name
   
+  
   ######      `` lname : string; `` 
   
   }
@@ -44,14 +46,21 @@
   ---
   
   test_two
+  
   **test**
+  
   test two foo
+  
    `` foo_bar `` 
+  
   **barz**
+  
       verbatim
   text
   - p1
+  
   p2
+  
   
   ###### module Foo : sig
   
@@ -77,6 +86,16 @@
   ###### end
   
   The end foo end keyword in doc comment.
+  
+  p1
+  
+  p2
+  
+  p3
+  
+  - a
+  
+  - b
   $ odoc markdown-generate test.odocl -o markdown --generate-links
   $ cat markdown/Test.md
   Test
@@ -96,6 +115,7 @@
   ######     type x
   
   doc for x
+  
   <a id="module-type-Y"></a>
   ######     module type Y = sig
   
@@ -117,6 +137,7 @@
   first name
   
   
+  
   <a id="type-name.lname"></a>
   ######     lname : string;
   
@@ -127,14 +148,21 @@
   ---
   
   [test_two](href)
+  
   [**test**](href)
+  
   [test two foo](href)
+  
   [foo_bar](href)
+  
   [**barz**](href)
+  
       verbatim
   text
   - p1
+  
   p2
+  
   
   <a id="module-Foo"></a>
   ###### module Foo : sig
@@ -172,6 +200,16 @@
   ###### end
   
   The end foo end keyword in doc comment.
+  
+  p1
+  
+  p2
+  
+  p3
+  
+  - a
+  
+  - b
 
   $ odoc markdown-generate test.odocl -o markdown --flavour=pandoc
   $ cat markdown/Test.md
@@ -189,6 +227,7 @@
   ######     type x
   
   doc for x
+  
   ######     module type Y = sig
   
   ######         type y = y'
@@ -204,6 +243,7 @@
   
   first name
   
+  
   ######      `` lname : string; `` 
   
   }
@@ -213,14 +253,21 @@
   ---
   
   test_two
+  
   **test**
+  
   test two foo
+  
    `` foo_bar `` 
+  
   **barz**
+  
       verbatim
   text
   - p1
+  
   p2
+  
   
   ###### module Foo : sig
   
@@ -246,3 +293,13 @@
   ###### end
   
   The end foo end keyword in doc comment.
+  
+  p1
+  
+  p2
+  
+  p3
+  
+  - a
+  
+  - b

@@ -32,9 +32,11 @@ Module  `` Recent ``
 
 foo
 
+
 ######     | D
 
 _bar_
+
 
 ######     | E of {
 ######      `` a : int; `` 
@@ -50,6 +52,7 @@ _bar_
 ######     | B : int -> string gadt
 
 foo
+
 
 ######     | C : {
 ######      `` a : int; `` 
@@ -69,9 +72,11 @@ foo
 
 foo
 
+
 ######      `` |  ``  `` `D `` 
 
 bar
+
  ]
 
 ###### type empty_variant = |

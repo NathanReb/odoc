@@ -4,6 +4,7 @@ Module  `` Nested ``
 
 This comment needs to be here before #235 is fixed.
 
+
 # Module
 
 ###### module X : sig
@@ -15,15 +16,18 @@ This comment needs to be here before #235 is fixed.
 
 Some type.
 
+
 # Values
 
 ######     val x : t
 
 The value of x.
 
+
 ###### end
 
 This is module X.
+
 
 # Module type
 
@@ -37,6 +41,7 @@ This is module X.
 
 Some type.
 
+
 ### Values
 ---
 
@@ -44,9 +49,11 @@ Some type.
 
 The value of y.
 
+
 ###### end
 
 This is module type Y.
+
 
 # Functor
 
@@ -67,11 +74,13 @@ This is module type Y.
 
 Some type.
 
+
 # Values
 
 ######         val y : t
 
 The value of y.
+
 
 ######     end
 
@@ -84,6 +93,7 @@ The value of y.
 
 Some type.
 
+
 ######     end
 
 
@@ -93,9 +103,11 @@ Some type.
 
 Some type.
 
+
 ###### end
 
 This is a functor F.
+
 
 # Class
 
@@ -104,6 +116,7 @@ This is a functor F.
 ######     val y : int
 
 Some value.
+
 ######     val mutable virtual y' : int
 
 
@@ -112,12 +125,14 @@ Some value.
 ######     method z : int
 
 Some method.
+
 ######     method private virtual z' : int
 
 
 ###### end
 
 This is class z.
+
 ###### class virtual  inherits : object
 
 ######     inherit z

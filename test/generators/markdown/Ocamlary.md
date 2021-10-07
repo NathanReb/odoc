@@ -3,6 +3,7 @@ Ocamlary
 Module  `` Ocamlary `` 
 
 This is an _interface_ with **all** of the _module system_ features. This documentation demonstrates:
+
 - comment formatting
 
 - unassociated comments
@@ -10,6 +11,7 @@ This is an _interface_ with **all** of the _module system_ features. This docume
 - documentation sections
 
 - module system documentation including
+
 1. submodules
 
 2. module aliases
@@ -23,6 +25,7 @@ This is an _interface_ with **all** of the _module system_ features. This docume
 6. modules with aliased signatures
 
 A numbered list:
+
 1. 3
 
 2. 2
@@ -30,15 +33,21 @@ A numbered list:
 3. 1
 David Sheets is the author.
 
+
 @author : David Sheets
 
 You may find more information about this HTML documentation renderer at github.com/dsheets/ocamlary.
+
 This is some verbatim text:
+
     verbatim
 This is some verbatim text:
+
     [][df[]]}}
 Here is some raw LaTeX: 
+
 Here is an index table of  `` Empty ``  modules:
+
 
 @ `` Empty ``  : A plain, empty module
 
@@ -47,11 +56,17 @@ Here is an index table of  `` Empty ``  modules:
 @ `` EmptyAlias ``  : A plain module alias of  `` Empty `` 
 
 Odoc doesn't support  `` {!indexlist} `` .
+
 Here is some superscript: x<sup>2</sup>
+
 Here is some subscript: x<sub>0</sub>
+
 Here are some escaped brackets: { [ @ ] }
+
 Here is some _emphasis_  `` followed by code `` .
+
 An unassociated comment
+
 
 # Level 1
 
@@ -75,6 +90,7 @@ An unassociated comment
 ###### end
 
 A plain, empty module
+
 ###### module type Empty = sig
 
 ######     type t
@@ -83,6 +99,7 @@ A plain, empty module
 ###### end
 
 An ambiguous, misnamed module type
+
 ###### module type MissingComment = sig
 
 ######     type t
@@ -92,11 +109,13 @@ An ambiguous, misnamed module type
 
 An ambiguous, misnamed module type
 
+
 # Section 9000
 
 ###### module EmptyAlias = Empty
 
 A plain module alias of  `` Empty `` 
+
 
 ### EmptySig
 ---
@@ -105,17 +124,21 @@ A plain module alias of  `` Empty ``
 ###### end
 
 A plain, empty module signature
+
 ###### module type EmptySigAlias = EmptySig
 
 A plain, empty module signature alias of
+
 ###### module ModuleWithSignature : sig
 ###### end
 
 A plain module of a signature of  `` EmptySig ``  (reference)
+
 ###### module ModuleWithSignatureAlias : sig
 ###### end
 
 A plain module with an alias signature
+
 ###### module One : sig
 
 ######     type one
@@ -137,6 +160,7 @@ A plain module with an alias signature
 ###### end
 
 There's a signature in a module in this signature.
+
 ###### module type SuperSig = sig
 
 ######     module type SubSigA = sig
@@ -189,6 +213,7 @@ There's a signature in a module in this signature.
 ###### end
 
 For a good time, see  `` SuperSig `` .SubSigA.subSig or  `` SuperSig `` .SubSigB.subSig or  `` SuperSig.EmptySig `` . Section Section 9000 is also interesting. EmptySig is the section and  `` EmptySig ``  is the module signature.
+
 ###### module Buffer : sig
 
 ######     val f : int -> unit
@@ -197,27 +222,35 @@ For a good time, see  `` SuperSig `` .SubSigA.subSig or  `` SuperSig `` .SubSigB
 ###### end
 
 References are resolved after everything, so  `` {!Buffer.t} ``  won't resolve.
+
 Some text before exception title.
+
 
 ### Basic exception stuff
 ---
 
 After exception title.
+
 ###### exception Kaboom of unit
 
 Unary exception constructor
+
 ###### exception Kablam of unit * unit
 
 Binary exception constructor
+
 ###### exception Kapow of unit * unit
 
 Unary exception constructor over binary tuple
+
 ###### exception EmptySig
 
  `` EmptySig ``  is a module and  `` EmptySig ``  is this exception.
+
 ###### exception EmptySigAlias
 
  `` EmptySigAlias ``  is this exception.
+
 
 ### Basic type and value stuff with advanced doc comments
 ---
@@ -225,16 +258,20 @@ Unary exception constructor over binary tuple
 ###### type ('a, 'b) a_function = 'a -> 'b
 
  `` a_function ``  is this type and  `` a_function ``  is the value below.
+
 ###### val a_function : x:int -> int
 
 This is  `` a_function ``  with param and return type.
+
 
 @parameter x : the  `` x ``  coordinate
 
 
 
 
+
 @returns : the  `` y ``  coordinate
+
 
 
 ###### val fun_fun_fun : ((int, int) a_function, (unit, unit) a_function) a_function
@@ -247,10 +284,12 @@ This is  `` a_function ``  with param and return type.
 @raises Not_found : That's all it does
 
 
+
 ###### val ocaml_org : string
 
 
 @see http://ocaml.org/ : The OCaml Web site
+
 
 
 ###### val some_file : string
@@ -259,15 +298,18 @@ This is  `` a_function ``  with param and return type.
 @see  `` some_file ``  : The file called  `` some_file `` 
 
 
+
 ###### val some_doc : string
 
 
 @see some_doc : The document called  `` some_doc `` 
 
 
+
 ###### val since_mesozoic : unit
 
 This value was introduced in the Mesozoic era.
+
 
 @since : mesozoic
 
@@ -275,12 +317,15 @@ This value was introduced in the Mesozoic era.
 
 This value has had changes in 1.0.0, 1.1.0, and 1.2.0.
 
+
 @before 1.0.0 : before 1.0.0
 
 
 
 
+
 @before 1.1.0 : before 1.1.0
+
 
 
 
@@ -328,6 +373,7 @@ This value has had changes in 1.0.0, 1.1.0, and 1.2.0.
 ######     type collection
 
 This comment is for  `` collection `` .
+
 ######     type element
 
 ######     module InnerModuleA : sig
@@ -335,41 +381,51 @@ This comment is for  `` collection `` .
 ######         type t = collection
 
 This comment is for  `` t `` .
+
 ######         module InnerModuleA' : sig
 
 ######             type t = (unit, unit) a_function
 
 This comment is for  `` t `` .
 
+
 ######         end
 
 This comment is for  `` InnerModuleA' `` .
+
 ######         module type InnerModuleTypeA' = sig
 
 ######             type t = InnerModuleA'.t
 
 This comment is for  `` t `` .
 
+
 ######         end
 
 This comment is for  `` InnerModuleTypeA' `` .
 
+
 ######     end
 
 This comment is for  `` InnerModuleA `` .
+
 ######     module type InnerModuleTypeA = InnerModuleA.InnerModuleTypeA'
 
 This comment is for  `` InnerModuleTypeA `` .
+
 
 ###### end
 
 This comment is for  `` CollectionModule `` .
+
 ###### module type COLLECTION = sig
 
 This comment is for  `` CollectionModule `` .
+
 ######     type collection
 
 This comment is for  `` collection `` .
+
 ######     type element
 
 ######     module InnerModuleA : sig
@@ -377,35 +433,43 @@ This comment is for  `` collection `` .
 ######         type t = collection
 
 This comment is for  `` t `` .
+
 ######         module InnerModuleA' : sig
 
 ######             type t = (unit, unit) a_function
 
 This comment is for  `` t `` .
 
+
 ######         end
 
 This comment is for  `` InnerModuleA' `` .
+
 ######         module type InnerModuleTypeA' = sig
 
 ######             type t = InnerModuleA'.t
 
 This comment is for  `` t `` .
 
+
 ######         end
 
 This comment is for  `` InnerModuleTypeA' `` .
 
+
 ######     end
 
 This comment is for  `` InnerModuleA `` .
+
 ######     module type InnerModuleTypeA = InnerModuleA.InnerModuleTypeA'
 
 This comment is for  `` InnerModuleTypeA `` .
+
 
 ###### end
 
 module type of
+
 ###### module Recollection : sig
 
 
@@ -414,9 +478,11 @@ module type of
 ######     module C : sig
 
 This comment is for  `` CollectionModule `` .
+
 ######         type collection
 
 This comment is for  `` collection `` .
+
 ######         type element
 
 ######         module InnerModuleA : sig
@@ -424,31 +490,38 @@ This comment is for  `` collection `` .
 ######             type t = collection
 
 This comment is for  `` t `` .
+
 ######             module InnerModuleA' : sig
 
 ######                 type t = (unit, unit) a_function
 
 This comment is for  `` t `` .
 
+
 ######             end
 
 This comment is for  `` InnerModuleA' `` .
+
 ######             module type InnerModuleTypeA' = sig
 
 ######                 type t = InnerModuleA'.t
 
 This comment is for  `` t `` .
 
+
 ######             end
 
 This comment is for  `` InnerModuleTypeA' `` .
 
+
 ######         end
 
 This comment is for  `` InnerModuleA `` .
+
 ######         module type InnerModuleTypeA = InnerModuleA.InnerModuleTypeA'
 
 This comment is for  `` InnerModuleTypeA `` .
+
 
 ######     end
 
@@ -456,9 +529,11 @@ This comment is for  `` InnerModuleTypeA `` .
 # Signature
 
 This comment is for  `` CollectionModule `` .
+
 ######     type collection = C.element list
 
 This comment is for  `` collection `` .
+
 ######     type element = C.collection
 
 ######     module InnerModuleA : sig
@@ -466,31 +541,38 @@ This comment is for  `` collection `` .
 ######         type t = collection
 
 This comment is for  `` t `` .
+
 ######         module InnerModuleA' : sig
 
 ######             type t = (unit, unit) a_function
 
 This comment is for  `` t `` .
 
+
 ######         end
 
 This comment is for  `` InnerModuleA' `` .
+
 ######         module type InnerModuleTypeA' = sig
 
 ######             type t = InnerModuleA'.t
 
 This comment is for  `` t `` .
 
+
 ######         end
 
 This comment is for  `` InnerModuleTypeA' `` .
 
+
 ######     end
 
 This comment is for  `` InnerModuleA `` .
+
 ######     module type InnerModuleTypeA = InnerModuleA.InnerModuleTypeA'
 
 This comment is for  `` InnerModuleTypeA `` .
+
 
 ###### end
 
@@ -499,9 +581,11 @@ This comment is for  `` InnerModuleTypeA `` .
 ######     module C : sig
 
 This comment is for  `` CollectionModule `` .
+
 ######         type collection
 
 This comment is for  `` collection `` .
+
 ######         type element
 
 ######         module InnerModuleA : sig
@@ -509,31 +593,38 @@ This comment is for  `` collection `` .
 ######             type t = collection
 
 This comment is for  `` t `` .
+
 ######             module InnerModuleA' : sig
 
 ######                 type t = (unit, unit) a_function
 
 This comment is for  `` t `` .
 
+
 ######             end
 
 This comment is for  `` InnerModuleA' `` .
+
 ######             module type InnerModuleTypeA' = sig
 
 ######                 type t = InnerModuleA'.t
 
 This comment is for  `` t `` .
 
+
 ######             end
 
 This comment is for  `` InnerModuleTypeA' `` .
 
+
 ######         end
 
 This comment is for  `` InnerModuleA `` .
+
 ######         module type InnerModuleTypeA = InnerModuleA.InnerModuleTypeA'
 
 This comment is for  `` InnerModuleTypeA `` .
+
 
 ######     end
 
@@ -558,31 +649,38 @@ This comment is for  `` InnerModuleTypeA `` .
 ######         type t = collection
 
 This comment is for  `` t `` .
+
 ######         module InnerModuleA' : sig
 
 ######             type t = (unit, unit) a_function
 
 This comment is for  `` t `` .
 
+
 ######         end
 
 This comment is for  `` InnerModuleA' `` .
+
 ######         module type InnerModuleTypeA' = sig
 
 ######             type t = InnerModuleA'.t
 
 This comment is for  `` t `` .
 
+
 ######         end
 
 This comment is for  `` InnerModuleTypeA' `` .
 
+
 ######     end
 
 This comment is for  `` InnerModuleA `` .
+
 ######     module type InnerModuleTypeA = InnerModuleA.InnerModuleTypeA'
 
 This comment is for  `` InnerModuleTypeA `` .
+
 
 ###### end
 
@@ -593,9 +691,11 @@ This comment is for  `` InnerModuleTypeA `` .
 ######     module Q : sig
 
 This comment is for  `` CollectionModule `` .
+
 ######         type collection
 
 This comment is for  `` collection `` .
+
 ######         type element
 
 ######         module InnerModuleA : sig
@@ -603,31 +703,38 @@ This comment is for  `` collection `` .
 ######             type t = collection
 
 This comment is for  `` t `` .
+
 ######             module InnerModuleA' : sig
 
 ######                 type t = (unit, unit) a_function
 
 This comment is for  `` t `` .
 
+
 ######             end
 
 This comment is for  `` InnerModuleA' `` .
+
 ######             module type InnerModuleTypeA' = sig
 
 ######                 type t = InnerModuleA'.t
 
 This comment is for  `` t `` .
 
+
 ######             end
 
 This comment is for  `` InnerModuleTypeA' `` .
 
+
 ######         end
 
 This comment is for  `` InnerModuleA `` .
+
 ######         module type InnerModuleTypeA = InnerModuleA.InnerModuleTypeA'
 
 This comment is for  `` InnerModuleTypeA `` .
+
 
 ######     end
 
@@ -641,9 +748,11 @@ This comment is for  `` InnerModuleTypeA `` .
 ######     module Q : sig
 
 This comment is for  `` CollectionModule `` .
+
 ######         type collection
 
 This comment is for  `` collection `` .
+
 ######         type element
 
 ######         module InnerModuleA : sig
@@ -651,31 +760,38 @@ This comment is for  `` collection `` .
 ######             type t = collection
 
 This comment is for  `` t `` .
+
 ######             module InnerModuleA' : sig
 
 ######                 type t = (unit, unit) a_function
 
 This comment is for  `` t `` .
 
+
 ######             end
 
 This comment is for  `` InnerModuleA' `` .
+
 ######             module type InnerModuleTypeA' = sig
 
 ######                 type t = InnerModuleA'.t
 
 This comment is for  `` t `` .
 
+
 ######             end
 
 This comment is for  `` InnerModuleTypeA' `` .
 
+
 ######         end
 
 This comment is for  `` InnerModuleA `` .
+
 ######         module type InnerModuleTypeA = InnerModuleA.InnerModuleTypeA'
 
 This comment is for  `` InnerModuleTypeA `` .
+
 
 ######     end
 
@@ -689,9 +805,11 @@ This comment is for  `` InnerModuleTypeA `` .
 ######     module Q : sig
 
 This comment is for  `` CollectionModule `` .
+
 ######         type collection
 
 This comment is for  `` collection `` .
+
 ######         type element
 
 ######         module InnerModuleA : sig
@@ -699,31 +817,38 @@ This comment is for  `` collection `` .
 ######             type t = collection
 
 This comment is for  `` t `` .
+
 ######             module InnerModuleA' : sig
 
 ######                 type t = (unit, unit) a_function
 
 This comment is for  `` t `` .
 
+
 ######             end
 
 This comment is for  `` InnerModuleA' `` .
+
 ######             module type InnerModuleTypeA' = sig
 
 ######                 type t = InnerModuleA'.t
 
 This comment is for  `` t `` .
 
+
 ######             end
 
 This comment is for  `` InnerModuleTypeA' `` .
 
+
 ######         end
 
 This comment is for  `` InnerModuleA `` .
+
 ######         module type InnerModuleTypeA = InnerModuleA.InnerModuleTypeA'
 
 This comment is for  `` InnerModuleTypeA `` .
+
 
 ######     end
 
@@ -731,6 +856,7 @@ This comment is for  `` InnerModuleTypeA `` .
 ###### end
 
 This module type includes two signatures.
+
 ###### module FunctorTypeOf : sig
 
 
@@ -739,9 +865,11 @@ This module type includes two signatures.
 ######     module Collection : sig
 
 This comment is for  `` CollectionModule `` .
+
 ######         type collection
 
 This comment is for  `` collection `` .
+
 ######         type element
 
 ######         module InnerModuleA : sig
@@ -749,31 +877,38 @@ This comment is for  `` collection `` .
 ######             type t = collection
 
 This comment is for  `` t `` .
+
 ######             module InnerModuleA' : sig
 
 ######                 type t = (unit, unit) a_function
 
 This comment is for  `` t `` .
 
+
 ######             end
 
 This comment is for  `` InnerModuleA' `` .
+
 ######             module type InnerModuleTypeA' = sig
 
 ######                 type t = InnerModuleA'.t
 
 This comment is for  `` t `` .
 
+
 ######             end
 
 This comment is for  `` InnerModuleTypeA' `` .
 
+
 ######         end
 
 This comment is for  `` InnerModuleA `` .
+
 ######         module type InnerModuleTypeA = InnerModuleA.InnerModuleTypeA'
 
 This comment is for  `` InnerModuleTypeA `` .
+
 
 ######     end
 
@@ -784,15 +919,18 @@ This comment is for  `` InnerModuleTypeA `` .
 
 This comment is for  `` t `` .
 
+
 ###### end
 
 This comment is for  `` FunctorTypeOf `` .
+
 ###### module type IncludeModuleType = sig
 
 
 ###### end
 
 This comment is for  `` IncludeModuleType `` .
+
 ###### module type ToInclude = sig
 
 ######     module IncludedA : sig
@@ -835,25 +973,32 @@ This comment is for  `` IncludeModuleType `` .
 
 This comment is for  `` field1 `` .
 
+
 ######      `` field2 : int; `` 
 
 This comment is for  `` field2 `` .
+
 }
 
 This comment is for  `` record `` .
+
 This comment is also for  `` record `` .
+
 ###### type mutable_record = {
 ######      `` mutable a : int; `` 
 
  `` a ``  is first and mutable
 
+
 ######      `` b : unit; `` 
 
  `` b ``  is second and immutable
 
+
 ######      `` mutable c : int; `` 
 
  `` c ``  is third and mutable
+
 }
 
 ###### type universe_record = {
@@ -866,21 +1011,27 @@ This comment is also for  `` record `` .
 
 This comment is for  `` TagA `` .
 
+
 ######     | ConstrB of int
 
 This comment is for  `` ConstrB `` .
 
+
 ######     | ConstrC of int * int
 
 This comment is for binary  `` ConstrC `` .
+
 
 ######     | ConstrD of int * int
 
 This comment is for unary  `` ConstrD ``  of binary tuple.
 
 
+
 This comment is for  `` variant `` .
+
 This comment is also for  `` variant `` .
+
 ###### type poly_variant = [ 
 ######      `` |  ``  `` `TagA `` 
 
@@ -890,7 +1041,9 @@ This comment is also for  `` variant `` .
  ]
 
 This comment is for  `` poly_variant `` .
+
 Wow! It was a polymorphic variant!
+
 ###### type (_, _) full_gadt = 
 ######     | Tag : (unit, unit) full_gadt
 
@@ -906,7 +1059,9 @@ Wow! It was a polymorphic variant!
 
 
 This comment is for  `` full_gadt `` .
+
 Wow! It was a GADT!
+
 ###### type 'a partial_gadt = 
 ######     | AscribeTag : 'a partial_gadt
 
@@ -919,13 +1074,17 @@ Wow! It was a GADT!
 
 
 This comment is for  `` partial_gadt `` .
+
 Wow! It was a mixed GADT!
+
 ###### type alias = variant
 
 This comment is for  `` alias `` .
+
 ###### type tuple = (alias * alias) * alias * (alias * alias)
 
 This comment is for  `` tuple `` .
+
 ###### type variant_alias = variant = 
 ######     | TagA
 
@@ -941,6 +1100,7 @@ This comment is for  `` tuple `` .
 
 
 This comment is for  `` variant_alias `` .
+
 ###### type record_alias = record = {
 ######      `` field1 : int; `` 
 
@@ -950,6 +1110,7 @@ This comment is for  `` variant_alias `` .
 }
 
 This comment is for  `` record_alias `` .
+
 ###### type poly_variant_union = [ 
 ######      `` |  ``  `` poly_variant `` 
 
@@ -959,6 +1120,7 @@ This comment is for  `` record_alias `` .
  ]
 
 This comment is for  `` poly_variant_union `` .
+
 ###### type 'a poly_poly_variant = [ 
 ######      `` |  ``  `` `TagA of 'a `` 
 
@@ -1015,6 +1177,7 @@ This comment is for  `` poly_variant_union `` .
 
 
 This comment is for  `` full_gadt_alias `` .
+
 ###### type 'a partial_gadt_alias = 'a partial_gadt = 
 ######     | AscribeTag : 'a partial_gadt_alias
 
@@ -1027,9 +1190,11 @@ This comment is for  `` full_gadt_alias `` .
 
 
 This comment is for  `` partial_gadt_alias `` .
+
 ###### exception Exn_arrow : unit -> exn
 
 This comment is for  `` Exn_arrow `` .
+
 ###### type mutual_constr_a = 
 ######     | A
 
@@ -1039,7 +1204,9 @@ This comment is for  `` Exn_arrow `` .
 This comment is between  `` mutual_constr_a ``  and  `` mutual_constr_b `` .
 
 
+
 This comment is for  `` mutual_constr_a ``  then  `` mutual_constr_b `` .
+
 ###### and mutual_constr_b = 
 ######     | B
 
@@ -1049,7 +1216,9 @@ This comment is for  `` mutual_constr_a ``  then  `` mutual_constr_b `` .
 This comment must be here for the next to associate correctly.
 
 
+
 This comment is for  `` mutual_constr_b ``  then  `` mutual_constr_a `` .
+
 ###### type rec_obj = < f : int; g : unit -> unit; h : rec_obj; >
 
 ###### type 'a open_obj = < f : int; g : unit -> unit; .. > as 'a
@@ -1065,6 +1234,7 @@ This comment is for  `` mutual_constr_b ``  then  `` mutual_constr_a `` .
 ###### type ext = ..
 
 A mystery wrapped in an ellipsis
+
 ###### type ext += 
 ######     | ExtA
 
@@ -1096,6 +1266,7 @@ A mystery wrapped in an ellipsis
 ###### type 'a poly_ext = ..
 
 'a poly_ext
+
 ###### type poly_ext += 
 ######     | Foo of 'b
 
@@ -1105,10 +1276,12 @@ A mystery wrapped in an ellipsis
 'b poly_ext
 
 
+
 ###### type poly_ext += 
 ######     | Quux of 'c
 
 'c poly_ext
+
 
 
 ###### module ExtMod : sig
@@ -1129,18 +1302,22 @@ A mystery wrapped in an ellipsis
 It's got the rock
 
 
+
 ###### type ExtMod.t += 
 ######     | ZzzTop of unit
 
 and it packs a unit.
 
 
+
 ###### val launch_missiles : unit -> unit
 
 Rotate keys on my mark...
+
 ###### type my_mod = (module COLLECTION)
 
 A brown paper package tied up with string
+
 ###### class  empty_class : object
 ###### end
 
@@ -1665,6 +1842,7 @@ A brown paper package tied up with string
 
  `` With10.T ``  is a submodule type.
 
+
 ###### end
 
 ###### module type With11 = sig
@@ -1759,7 +1937,9 @@ A brown paper package tied up with string
 # Trying the {!modules: ...} command.
 
 With ocamldoc, toplevel units will be linked and documented, while submodules will behave as simple references.
+
 With odoc, everything should be resolved (and linked) but only toplevel units will be documented.
+
 
 @ `` Dep1.X ``  : 
 
@@ -1819,9 +1999,11 @@ With odoc, everything should be resolved (and linked) but only toplevel units wi
 ######         val bar : 'a Base.List.t -> 'a Base.List.t
 
 This is just  `` List `` .id, or rather  `` L.id `` 
+
 ######         val baz : 'a Base.List.t -> unit
 
 We can't reference  `` Base__ ``  because it's hidden.  `` List `` .t ( `` List.t `` ) should resolve.
+
 
 ######     end
 
@@ -1840,6 +2022,7 @@ We can't reference  `` Base__ ``  because it's hidden.  `` List `` .t ( `` List.
 ###### val test : 'a CanonicalTest.Base__.List.t -> unit
 
 Some ref to  `` CanonicalTest.Base_Tests.C.t ``  and  `` CanonicalTest.Base_Tests.L.id `` . But also to  `` CanonicalTest.Base.List ``  and  `` CanonicalTest.Base.List.t `` 
+
 
 # Aliases again
 
@@ -1929,6 +2112,7 @@ Some ref to  `` CanonicalTest.Base_Tests.C.t ``  and  `` CanonicalTest.Base_Test
 ---
 
 Just for giggle, let's see what happens when we include  `` Foo `` .
+
 ######     module A = Foo.A
 
 ######     module B = Foo.B
@@ -1949,6 +2133,7 @@ Just for giggle, let's see what happens when we include  `` Foo `` .
 ######     type testa = A.t
 
 And also, let's refer to  `` A.t ``  and  `` Foo.B.id `` 
+
 ######     module P1 : sig
 
 ######         module Y : sig
@@ -1983,17 +2168,21 @@ And also, let's refer to  `` A.t ``  and  `` Foo.B.id ``
 
 Let's imitate jst's layout.
 
+
 # Section title splicing
 
 I can refer to
+
 -  `` {!section:indexmodules} ``  : Trying the {!modules: ...} command.
 
 -  `` {!aliases} ``  : Aliases again
 But also to things in submodules:
+
 -  `` {!section:SuperSig.SubSigA.subSig} ``  :  `` SuperSig `` .SubSigA.subSig
 
 -  `` {!Aliases.incl} ``  :  `` incl `` 
 And just to make sure we do not mess up:
+
 -  `` {{!section:indexmodules}A} ``  : A
 
 -  `` {{!aliases}B} ``  : B
@@ -2019,6 +2208,7 @@ And just to make sure we do not mess up:
 ###### end
 
 Here goes:
+
 -  `` {!module-M.t} ``  :  `` M.t `` 
 
 -  `` {!module-type-M.t} ``  :  `` M.t `` 

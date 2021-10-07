@@ -19,12 +19,15 @@ Module  `` Labels ``
 ###### type t
 
 Attached to type
+
 ###### val f : t
 
 Attached to value
+
 ###### val e : unit -> t
 
 Attached to external
+
 ###### module type S = sig
 
 
@@ -54,6 +57,7 @@ Attached to external
 ###### exception E
 
 Attached to exception
+
 ###### type x = ..
 
 ###### type x += 
@@ -62,25 +66,31 @@ Attached to exception
 
 
 Attached to extension
+
 ###### module S := A
 
 Attached to module subst
+
 ###### type s := t
 
 Attached to type subst
+
 ###### type u = 
 ######     | A'
 
 Attached to constructor
 
 
+
 ###### type v = {
 ######      `` f : t; `` 
 
 Attached to field
+
 }
 
 Testing that labels can be referenced
+
 - Attached to unit
 
 - Attached to nothing

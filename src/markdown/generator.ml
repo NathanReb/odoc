@@ -13,10 +13,7 @@ module Markup : sig
 
   val space : t
 
-  (* TODO: abstract this! *)
   val backticks : t
-
-  val backtick : t
 
   val open_sq_bracket : t
 
@@ -52,7 +49,6 @@ end = struct
     | Anchor of string
     | String of string
     | Backticks
-    | Backtick
     | Nbsp
     | OpenSqBracket
     | CloseSqBracket
@@ -68,8 +64,6 @@ end = struct
   let space = Space
 
   let backticks = Backticks
-
-  let backtick = Backtick
 
   let open_sq_bracket, close_sq_bracket = (OpenSqBracket, CloseSqBracket)
 
@@ -124,7 +118,6 @@ end = struct
        if the spaces were missing.
     *)
     | Backticks -> Format.fprintf fmt " `` "
-    | Backtick -> Format.fprintf fmt " ` "
     | Nbsp -> Format.fprintf fmt "\u{00A0}"
     | OpenSqBracket -> Format.fprintf fmt "["
     | CloseSqBracket -> Format.fprintf fmt "]"
@@ -203,36 +196,14 @@ and inline (l : Inline.t) nbsp args =
             | None -> make_link content (make_hashes 1 ^ link.anchor))
             (continue content ++ continue rest)
       | InternalLink (Unresolved content) -> continue content ++ continue rest
-      | Source content -> (
-          let continue' s = if s = [] then noop else source_code s nbsp args in
-          match content with
-          | [] -> noop
-          | s :: rest -> (
-              match s with
-              | Tag _ -> source_code content nbsp args ++ continue' rest
-              | Elt i -> (
-                  match i with
-                  | [] -> noop
-                  | i' :: rest' ->
-                      (match i'.desc with
-                      | Text s ->
-                          if String.contains s '`' then
-                            backticks
-                            ++ source_code content nbsp args
-                            ++ backticks ++ continue' rest
-                          else
-                            backtick
-                            ++ source_code content nbsp args
-                            ++ backtick ++ continue rest'
-                      | _ -> source_code content nbsp args ++ continue' rest)
-                      ++ continue' rest)))
+      | Source content ->
+          cond
+            (source_code content nbsp args ++ continue rest)
+            (backticks
+            ++ source_code content nbsp args
+            ++ backticks ++ continue rest)
       | Raw_markup t -> raw_markup t ++ continue rest)
 
-(* cond
-     (source_code content nbsp args ++ continue rest)
-     (backticks
-     ++ source_code content nbsp args
-     ++ backticks ++ continue rest) *)
 let rec block (l : Block.t) nbsp args =
   match l with
   | [] -> noop
@@ -240,7 +211,7 @@ let rec block (l : Block.t) nbsp args =
       let continue r = if r = [] then noop else block r nbsp args in
       match b.desc with
       | Inline i -> inline i nbsp args ++ continue rest
-      | Paragraph i -> inline i nbsp args ++ break ++ continue rest
+      | Paragraph i -> inline i nbsp args ++ break ++ break ++ continue rest
       | List (list_typ, l) ->
           let f n b =
             let bullet =

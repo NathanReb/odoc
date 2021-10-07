@@ -3,7 +3,9 @@ NestedF
 Module  `` Nested.F `` 
 
 This is a functor F.
+
 Some additional comments.
+
 
 # Type
 
@@ -20,12 +22,14 @@ Some additional comments.
 
 Some type.
 
+
 ### Values
 ---
 
 ######     val y : t
 
 The value of y.
+
 
 ###### end
 
@@ -39,6 +43,7 @@ The value of y.
 
 Some type.
 
+
 ###### end
 
 
@@ -47,3 +52,4 @@ Some type.
 ###### type t = Arg1.t * Arg2.t
 
 Some type.
+

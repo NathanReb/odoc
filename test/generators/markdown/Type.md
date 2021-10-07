@@ -5,6 +5,7 @@ Module  `` Type ``
 ###### type abstract
 
 Some _documentation_.
+
 ###### type alias = int
 
 ###### type private_ = private int
@@ -49,9 +50,11 @@ Some _documentation_.
 
 foo
 
+
 ######     | D
 
 _bar_
+
 
 ######     | E of variant_e
 
@@ -94,9 +97,11 @@ _bar_
 
 foo
 
+
 ######      `` d : int; `` 
 
 _bar_
+
 
 ######      `` e : a. 'a; `` 
 
@@ -192,9 +197,11 @@ _bar_
 
 Documentation for  `` Extension `` .
 
+
 ######     | Another_extension
 
 Documentation for  `` Another_extension `` .
+
 
 
 ###### type mutually = 

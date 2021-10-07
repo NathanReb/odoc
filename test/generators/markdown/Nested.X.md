@@ -3,7 +3,9 @@ NestedX
 Module  `` Nested.X `` 
 
 This is module X.
+
 Some additional comments.
+
 
 # Type
 
@@ -11,8 +13,10 @@ Some additional comments.
 
 Some type.
 
+
 # Values
 
 ###### val x : t
 
 The value of x.
+

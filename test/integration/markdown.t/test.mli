@@ -40,3 +40,14 @@ module Foo : sig
   type poly = [ `Mon | `Tue ]
   type name = { fname:string; lname: string }
 end
+
+(** p1 *)
+
+(** p2
+
+   p3
+
+   {ul
+     {- a}
+     {- b}
+    } *)

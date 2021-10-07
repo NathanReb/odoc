@@ -3,6 +3,7 @@ OcamlaryAliases
 Module  `` Ocamlary.Aliases `` 
 
 Let's imitate jst's layout.
+
 ###### module Foo : sig
 
 ######     module A : sig
@@ -87,6 +88,7 @@ Let's imitate jst's layout.
 ---
 
 Just for giggle, let's see what happens when we include  `` Foo `` .
+
 ###### module A = Foo.A
 
 ###### module B = Foo.B
@@ -107,6 +109,7 @@ Just for giggle, let's see what happens when we include  `` Foo `` .
 ###### type testa = A.t
 
 And also, let's refer to  `` A.t ``  and  `` Foo.B.id `` 
+
 ###### module P1 : sig
 
 ######     module Y : sig
