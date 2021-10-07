@@ -5,33 +5,33 @@ Module  `` Ocamlary ``
 This is an _interface_ with **all** of the _module system_ features. This documentation demonstrates:
 
 - comment formatting
-
+  
 - unassociated comments
-
+  
 - documentation sections
-
+  
 - module system documentation including
-
-1. submodules
-
-2. module aliases
-
-3. module types
-
-4. module type aliases
-
-5. modules with signatures
-
-6. modules with aliased signatures
-
-A numbered list:
+  
+  1. submodules
+    
+  2. module aliases
+    
+  3. module types
+    
+  4. module type aliases
+    
+  5. modules with signatures
+    
+  6. modules with aliased signatures
+    
+  A numbered list:
 
 1. 3
-
+  
 2. 2
-
+  
 3. 1
-David Sheets is the author.
+  David Sheets is the author.
 
 
 @author : David Sheets
@@ -2174,23 +2174,23 @@ Let's imitate jst's layout.
 I can refer to
 
 -  `` {!section:indexmodules} ``  : Trying the {!modules: ...} command.
-
+  
 -  `` {!aliases} ``  : Aliases again
-But also to things in submodules:
+  But also to things in submodules:
 
 -  `` {!section:SuperSig.SubSigA.subSig} ``  :  `` SuperSig `` .SubSigA.subSig
-
+  
 -  `` {!Aliases.incl} ``  :  `` incl `` 
-And just to make sure we do not mess up:
+  And just to make sure we do not mess up:
 
 -  `` {{!section:indexmodules}A} ``  : A
-
+  
 -  `` {{!aliases}B} ``  : B
-
+  
 -  `` {{!section:SuperSig.SubSigA.subSig}C} ``  : C
-
+  
 -  `` {{!Aliases.incl}D} ``  : D
-
+  
 # New reference syntax
 
 ###### module type M = sig
@@ -2210,9 +2210,9 @@ And just to make sure we do not mess up:
 Here goes:
 
 -  `` {!module-M.t} ``  :  `` M.t `` 
-
+  
 -  `` {!module-type-M.t} ``  :  `` M.t `` 
-###### module Only_a_module : sig
+  ###### module Only_a_module : sig
 
 ######     type t
 
@@ -2220,13 +2220,13 @@ Here goes:
 ###### end
 
 -  `` {!Only_a_module.t} ``  :  `` Only_a_module.t `` 
-
+  
 -  `` {!module-Only_a_module.t} ``  :  `` Only_a_module.t `` 
-
+  
 -  `` {!module-Only_a_module.type-t} ``  :  `` Only_a_module.t `` 
-
+  
 -  `` {!type:Only_a_module.t} ``  :  `` Only_a_module.t `` 
-###### module type TypeExt = sig
+  ###### module type TypeExt = sig
 
 ######     type t = ..
 

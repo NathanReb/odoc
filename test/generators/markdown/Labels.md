@@ -92,27 +92,28 @@ Attached to field
 Testing that labels can be referenced
 
 - Attached to unit
-
+  
 - Attached to nothing
-
+  
 - Attached to module
-
+  
 - Attached to type
-
+  
 - Attached to value
-
+  
 - Attached to class
-
+  
 - Attached to class type
-
+  
 - Attached to exception
-
+  
 - Attached to extension
-
+  
 - Attached to module subst
-
+  
 - Attached to type subst
-
+  
 - Attached to constructor
-
+  
 - Attached to field
+  

@@ -81,35 +81,35 @@ let bar =
 # Lists
 
 - This is a
-
+  
 - shorthand bulleted list,
-
+  
 - and the paragraphs in each list item support _styling_.
-1. This is a
-
+  1. This is a
+    
 2. shorthand numbered list.
-- Shorthand list items can span multiple lines, however trying to put two paragraphs into a shorthand list item using a double line break
-just creates a paragraph outside the list.
+  - Shorthand list items can span multiple lines, however trying to put two paragraphs into a shorthand list item using a double line break
+    just creates a paragraph outside the list.
 
 - Similarly, inserting a blank line between two list items
-- creates two separate lists.
-- To get around this limitation, one
-
-can use explicitly-delimited lists.
-
-
-
+  - creates two separate lists.
+    - To get around this limitation, one
+      
+      can use explicitly-delimited lists.
+      
+      
+      
 - This one is bulleted,
-1. but there is also the numbered variant.
-- - lists
-
-- can be nested
-
-- and can include references
-
--  `` foo `` 
-
-
+  1. but there is also the numbered variant.
+    - - lists
+        
+      - can be nested
+        
+      - and can include references
+        
+      -  `` foo `` 
+        
+      
 # Unicode
 
 The parser supports any ASCII-compatible encoding, in particuλar UTF-8.

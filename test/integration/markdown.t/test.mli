@@ -28,11 +28,32 @@ verbatim
 text
 v} *)
 
-(** {ul
-     {- p1
+(** See if listness is preserved. *)
 
-        p2}
-    } *)
+(** This is an {i interface} with {b all} of the {e module system} features.
+    This documentation demonstrates:
+- comment formatting
+- unassociated comments
+- documentation sections
+- module system documentation including
+ {ol
+ {- submodules}
+ {- module aliases}
+ {- module types}
+ {- module type aliases}
+ {- modules with signatures}
+ {- modules with aliased signatures}
+}
+
+A numbered list:
++ 3
++ 2
++ 1
+
+    David Sheets is the author.
+    @author David Sheets
+*)
+
 
 (** The end foo end keyword in doc comment. *)
 module Foo : sig

@@ -57,10 +57,41 @@
   
       verbatim
   text
-  - p1
+  See if listness is preserved.
   
-  p2
+  This is an _interface_ with **all** of the _module system_ features. This documentation demonstrates:
   
+  - comment formatting
+    
+  - unassociated comments
+    
+  - documentation sections
+    
+  - module system documentation including
+    
+    1. submodules
+      
+    2. module aliases
+      
+    3. module types
+      
+    4. module type aliases
+      
+    5. modules with signatures
+      
+    6. modules with aliased signatures
+      
+    A numbered list:
+  
+  1. 3
+    
+  2. 2
+    
+  3. 1
+    David Sheets is the author.
+  
+  
+  @author : David Sheets
   
   ###### module Foo : sig
   
@@ -94,8 +125,9 @@
   p3
   
   - a
-  
+    
   - b
+    
   $ odoc markdown-generate test.odocl -o markdown --generate-links
   $ cat markdown/Test.md
   Test
@@ -159,10 +191,41 @@
   
       verbatim
   text
-  - p1
+  See if listness is preserved.
   
-  p2
+  This is an _interface_ with **all** of the _module system_ features. This documentation demonstrates:
   
+  - comment formatting
+    
+  - unassociated comments
+    
+  - documentation sections
+    
+  - module system documentation including
+    
+    1. submodules
+      
+    2. module aliases
+      
+    3. module types
+      
+    4. module type aliases
+      
+    5. modules with signatures
+      
+    6. modules with aliased signatures
+      
+    A numbered list:
+  
+  1. 3
+    
+  2. 2
+    
+  3. 1
+    David Sheets is the author.
+  
+  
+  @author : David Sheets
   
   <a id="module-Foo"></a>
   ###### module Foo : sig
@@ -208,8 +271,9 @@
   p3
   
   - a
-  
+    
   - b
+    
 
   $ odoc markdown-generate test.odocl -o markdown --flavour=pandoc
   $ cat markdown/Test.md
@@ -264,10 +328,41 @@
   
       verbatim
   text
-  - p1
+  See if listness is preserved.
   
-  p2
+  This is an _interface_ with **all** of the _module system_ features. This documentation demonstrates:
   
+  - comment formatting
+    
+  - unassociated comments
+    
+  - documentation sections
+    
+  - module system documentation including
+    
+    1. submodules
+      
+    2. module aliases
+      
+    3. module types
+      
+    4. module type aliases
+      
+    5. modules with signatures
+      
+    6. modules with aliased signatures
+      
+    A numbered list:
+  
+  1. 3
+    
+  2. 2
+    
+  3. 1
+    David Sheets is the author.
+  
+  
+  @author : David Sheets
   
   ###### module Foo : sig
   
@@ -301,5 +396,6 @@
   p3
   
   - a
-  
+    
   - b
+    

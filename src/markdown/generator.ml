@@ -5,6 +5,8 @@ open Doctree
 module Markup : sig
   type t
 
+  type indent = Any | V
+
   val noop : t
 
   val break : t
@@ -12,6 +14,8 @@ module Markup : sig
   val nbsp : t
 
   val space : t
+
+  val indent : indent -> int -> t -> t
 
   val backticks : t
 
@@ -46,6 +50,9 @@ end = struct
     | Concat of t list
     | Break
     | Space
+    (*TODO: Please make sure you can explain `indent` contructor and how it's used! *)
+    (*TODO: Think of why Drup used this kind of approach and see if it makes sense. *)
+    | Indent of indent * int * t
     | Anchor of string
     | String of string
     | Backticks
@@ -55,6 +62,9 @@ end = struct
     | OpenParenthesis
     | CloseParenthesis
 
+  and indent = Any | V
+  (*TODO: Why these constructors? *)
+
   let noop = Concat []
 
   let break = Break
@@ -62,6 +72,8 @@ end = struct
   let nbsp = Nbsp
 
   let space = Space
+
+  let indent indent i content = Indent (indent, i, content)
 
   let backticks = Backticks
 
@@ -109,8 +121,13 @@ end = struct
     | Concat l -> pp_many fmt l
     | Break -> Format.fprintf fmt "@\n"
     | Space -> Format.fprintf fmt " "
+    | Indent (indent, i, content) ->
+        Format.fprintf fmt "@[<%s%i>%a@]"
+          (match indent with Any -> "" | V -> "v")
+          i pp content
     | Anchor s -> Format.fprintf fmt "<a id=\"%s\"></a>" s
     | String s -> Format.fprintf fmt "%s" s
+    (*TODO: plese remove this comment when the backticks issues is resolved *)
     (* We use double backticks to take care of polymorphic variants or content
        within backtick, and the spaces before and after the backticks for
        clarity on what should be enclosed in backticks. For example,
@@ -219,7 +236,7 @@ let rec block (l : Block.t) nbsp args =
               | Unordered -> escaped "- "
               | Ordered -> str "%d. " (n + 1)
             in
-            bullet ++ block b nbsp args ++ break
+            indent V 2 (bullet ++ block b nbsp args ++ break)
           in
           list ~sep:break (List.mapi f l) ++ continue rest
       | Description _ ->
