@@ -1,5 +1,3 @@
-type args = { generate_links : bool ref; md_flavour : string ref }
+type args = { generate_links : bool; flavour : string }
 
-val args : args
-
-val render : Odoc_document.Types.Page.t -> Odoc_document.Renderer.page
+val render : Odoc_document.Types.Page.t -> args -> Odoc_document.Renderer.page

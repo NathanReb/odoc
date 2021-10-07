@@ -18,7 +18,7 @@ Module  `` Stop_dead_link_doc ``
 ######     | Bar of {
 ######      `` field : Foo.t; `` 
 
-###### }
+}
 
 
 

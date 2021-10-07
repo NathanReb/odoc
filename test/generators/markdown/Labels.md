@@ -78,7 +78,7 @@ Attached to constructor
 ######      `` f : t; `` 
 
 Attached to field
-###### }
+}
 
 Testing that labels can be referenced
 - Attached to unit

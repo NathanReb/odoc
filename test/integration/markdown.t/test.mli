@@ -33,3 +33,10 @@ v} *)
 
         p2}
     } *)
+
+(** The end foo end keyword in doc comment. *)
+module Foo : sig
+  type foo
+  type poly = [ `Mon | `Tue ]
+  type name = { fname:string; lname: string }
+end

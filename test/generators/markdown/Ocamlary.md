@@ -838,7 +838,7 @@ This comment is for  `` field1 `` .
 ######      `` field2 : int; `` 
 
 This comment is for  `` field2 `` .
-###### }
+}
 
 This comment is for  `` record `` .
 This comment is also for  `` record `` .
@@ -854,12 +854,12 @@ This comment is also for  `` record `` .
 ######      `` mutable c : int; `` 
 
  `` c ``  is third and mutable
-###### }
+}
 
 ###### type universe_record = {
 ######      `` nihilate : a. 'a -> unit; `` 
 
-###### }
+}
 
 ###### type variant = 
 ######     | TagA
@@ -947,7 +947,7 @@ This comment is for  `` variant_alias `` .
 
 ######      `` field2 : int; `` 
 
-###### }
+}
 
 This comment is for  `` record_alias `` .
 ###### type poly_variant_union = [ 

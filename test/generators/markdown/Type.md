@@ -36,7 +36,7 @@ Some _documentation_.
 ###### type variant_e = {
 ######      `` a : int; `` 
 
-###### }
+}
 
 ###### type variant = 
 ######     | A
@@ -60,7 +60,7 @@ _bar_
 ###### type variant_c = {
 ######      `` a : int; `` 
 
-###### }
+}
 
 ###### type _ gadt = 
 ######     | A : int gadt
@@ -100,7 +100,7 @@ _bar_
 
 ######      `` e : a. 'a; `` 
 
-###### }
+}
 
 ###### type polymorphic_variant = [ 
 ######      `` |  ``  `` `A `` 

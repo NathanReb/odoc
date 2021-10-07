@@ -143,37 +143,35 @@ let style (style : style) content =
 
 let make_hashes n = String.make n '#'
 
-type args = { generate_links : bool ref; md_flavour : string ref }
+type args = { generate_links : bool; flavour : string }
 
-let args = { generate_links = ref true; md_flavour = ref "" }
-
-let rec source_code (s : Source.t) nbsp =
+let rec source_code (s : Source.t) nbsp args =
   match s with
   | [] -> noop
   | h :: t -> (
-      let continue s = if s = [] then concat [] else source_code s nbsp in
+      let continue s = if s = [] then concat [] else source_code s nbsp args in
       match h with
-      | Source.Elt i -> inline i nbsp ++ continue t
+      | Source.Elt i -> inline i nbsp args ++ continue t
       | Tag (None, s) -> continue s ++ continue t
       | Tag (Some _, s) -> continue s ++ continue t)
 
-and inline (l : Inline.t) nbsp =
+and inline (l : Inline.t) nbsp args =
   match l with
   | [] -> noop
   | i :: rest -> (
-      let continue i = if i = [] then noop else inline i nbsp in
+      let continue i = if i = [] then noop else inline i nbsp args in
       let make_link c s =
         open_sq_bracket ++ continue c ++ close_sq_bracket ++ open_parenthesis
         ++ string s ++ close_parenthesis ++ continue rest
       in
       let cond then_clause else_clause =
-        if !(args.generate_links) then then_clause else else_clause
+        if args.generate_links then then_clause else else_clause
       in
       match i.desc with
       | Text "" -> continue rest
       | Text s -> (
           match s with
-          | "end" | "}" | "]" ->
+          | "end" (* TODO: | "}" | "]"  *) ->
               string (make_hashes 6) ++ space ++ nbsp ++ string s
           | _ ->
               let l, _, rest =
@@ -200,18 +198,20 @@ and inline (l : Inline.t) nbsp =
       | InternalLink (Unresolved content) -> continue content ++ continue rest
       | Source content ->
           cond
-            (source_code content nbsp ++ continue rest)
-            (backticks ++ source_code content nbsp ++ backticks ++ continue rest)
+            (source_code content nbsp args ++ continue rest)
+            (backticks
+            ++ source_code content nbsp args
+            ++ backticks ++ continue rest)
       | Raw_markup t -> raw_markup t ++ continue rest)
 
-let rec block (l : Block.t) nbsp =
+let rec block (l : Block.t) nbsp args =
   match l with
   | [] -> noop
   | b :: rest -> (
-      let continue r = if r = [] then noop else block r nbsp in
+      let continue r = if r = [] then noop else block r nbsp args in
       match b.desc with
-      | Inline i -> inline i nbsp ++ continue rest
-      | Paragraph i -> inline i nbsp ++ break ++ continue rest
+      | Inline i -> inline i nbsp args ++ continue rest
+      | Paragraph i -> inline i nbsp args ++ break ++ continue rest
       | List (list_typ, l) ->
           let f n b =
             let bullet =
@@ -219,7 +219,7 @@ let rec block (l : Block.t) nbsp =
               | Unordered -> escaped "- "
               | Ordered -> str "%d. " (n + 1)
             in
-            bullet ++ block b nbsp ++ break
+            bullet ++ block b nbsp args ++ break
           in
           list ~sep:break (List.mapi f l) ++ continue rest
       | Description _ ->
@@ -229,20 +229,20 @@ let rec block (l : Block.t) nbsp =
               | _ -> Stop_and_keep)
           in
           let f i =
-            let key = inline i.Description.key nbsp in
-            let def = block i.Description.definition nbsp in
+            let key = inline i.Description.key nbsp args in
+            let def = block i.Description.definition nbsp args in
             break ++ str "@" ++ key ++ str " : " ++ def ++ break ++ break
           in
           list ~sep:break (List.map f descrs) ++ continue rest
-      | Source content -> source_code content nbsp ++ continue rest
+      | Source content -> source_code content nbsp args ++ continue rest
       | Verbatim content ->
-          (* TODO:*)
+          (* TODO: *)
           space ++ space ++ space ++ space ++ str "%s" content ++ break
           ++ continue rest
       | Raw_markup t -> raw_markup t ++ continue rest)
 
-let heading { Heading.label; level; title } nbsp =
-  let title = inline title nbsp in
+let heading { Heading.label; level; title } nbsp args =
+  let title = inline title nbsp args in
   let level =
     match level with
     | 1 -> make_hashes 1
@@ -261,7 +261,7 @@ let heading { Heading.label; level; title } nbsp =
       let sep = str "---" in
       let heading' level = string level ++ space ++ title in
       let cond then_clause else_clause =
-        if !(args.md_flavour) = "pandoc" then then_clause else else_clause
+        if args.flavour = "pandoc" then then_clause else else_clause
       in
       match level with
       (* This match forms a horizontal line below the heading (for readability reasons),
@@ -279,16 +279,19 @@ let inline_subpage = function
 
 let item_prop nbsp = string (make_hashes 6) ++ space ++ nbsp
 
-let rec documented_src (l : DocumentedSrc.t) nbsp nbsp' =
+let rec documented_src (l : DocumentedSrc.t) nbsp nbsp' args =
   match l with
   | [] -> noop
   | line :: rest -> (
-      let continue r = if r = [] then noop else documented_src r nbsp nbsp' in
+      let continue r =
+        if r = [] then noop else documented_src r nbsp nbsp' args
+      in
       match line with
-      | Code c -> source_code c nbsp' ++ continue rest
+      | Code c -> source_code c nbsp' args ++ continue rest
       | Alternative alt -> (
-          match alt with Expansion e -> documented_src e.expansion nbsp nbsp')
-      | Subpage p -> subpage p.content nbsp ++ continue rest
+          match alt with
+          | Expansion e -> documented_src e.expansion nbsp nbsp' args)
+      | Subpage p -> subpage p.content nbsp args ++ continue rest
       | Documented _ | Nested _ ->
           let lines, _, rest =
             Take.until l ~classify:(function
@@ -299,14 +302,16 @@ let rec documented_src (l : DocumentedSrc.t) nbsp nbsp' =
               | _ -> Stop_and_keep)
           in
           let f (content, doc, (anchor : Odoc_document.Url.t option)) =
-            let doc = match doc with [] -> noop | doc -> block doc nbsp in
+            let doc =
+              match doc with [] -> noop | doc -> block doc nbsp args
+            in
             let content =
               match content with
-              | `D code -> inline code nbsp
-              | `N l -> documented_src l nbsp nbsp'
+              | `D code -> inline code nbsp args
+              | `N l -> documented_src l nbsp nbsp' args
             in
             let item = item_prop nbsp ++ content ++ break ++ break ++ doc in
-            if !(args.generate_links) then
+            if args.generate_links then
               let anchor =
                 match anchor with Some a -> a.anchor | None -> ""
               in
@@ -316,27 +321,28 @@ let rec documented_src (l : DocumentedSrc.t) nbsp nbsp' =
           let l = list ~sep:noop (List.map f lines) in
           l ++ continue rest)
 
-and subpage { title = _; header = _; items; url = _ } nbsp =
+and subpage { title = _; header = _; items; url = _ } nbsp args =
   let content = items in
   let surround body =
     if content = [] then break else break ++ break ++ body ++ break
   in
-  surround @@ item nbsp content
+  surround @@ item nbsp content args
 
-and item nbsp' (l : Item.t list) : Markup.t =
+and item nbsp' (l : Item.t list) args : Markup.t =
   match l with
   | [] -> noop
   | i :: rest -> (
-      let continue r = if r = [] then noop else item nbsp' r in
+      let continue r = if r = [] then noop else item nbsp' r args in
       match i with
-      | Text b -> block b nbsp' ++ continue rest
-      | Heading h -> break ++ heading h nbsp' ++ break ++ break ++ continue rest
+      | Text b -> block b nbsp' args ++ continue rest
+      | Heading h ->
+          break ++ heading h nbsp' args ++ break ++ break ++ continue rest
       | Declaration { attr = _; anchor; content; doc } ->
           let nbsp'' = nbsp ++ nbsp ++ nbsp ++ nbsp in
-          let decl = documented_src content (nbsp' ++ nbsp'') nbsp' in
-          let doc = match doc with [] -> noop | doc -> block doc nbsp' in
+          let decl = documented_src content (nbsp' ++ nbsp'') nbsp' args in
+          let doc = match doc with [] -> noop | doc -> block doc nbsp' args in
           let item' = item_prop nbsp' ++ decl ++ break ++ break ++ doc in
-          if !(args.generate_links) then
+          if args.generate_links then
             let anchor = match anchor with Some x -> x.anchor | None -> "" in
             anchor' anchor ++ break ++ item' ++ continue rest
           else item' ++ continue rest
@@ -344,10 +350,10 @@ and item nbsp' (l : Item.t list) : Markup.t =
           { attr = _; anchor = _; content = { summary; status; content }; doc }
         ->
           let d =
-            if inline_subpage status then item nbsp' content
+            if inline_subpage status then item nbsp' content args
             else
-              let s = source_code summary nbsp' in
-              match doc with [] -> s | doc -> s ++ block doc nbsp'
+              let s = source_code summary nbsp' args in
+              match doc with [] -> s | doc -> s ++ block doc nbsp' args
           in
           d ++ continue rest)
 
@@ -356,21 +362,23 @@ let on_sub subp =
   | `Page p -> if Link.should_inline p.Subpage.content.url then Some 1 else None
   | `Include incl -> if inline_subpage incl.Include.status then Some 0 else None
 
-let page { Page.header; items; url; _ } =
+let page { Page.header; items; url; _ } args =
   let header = Shift.compute ~on_sub header in
   let items = Shift.compute ~on_sub items in
   let inline' l = List.map (fun s -> string s) l |> concat in
   (*TODO: inline `block'`. *)
   block'
     ([ inline' (Link.for_printing url) ]
-    @ [ item (str "") header ++ item (str "") items ])
+    @ [ item (str "") header args ++ item (str "") items args ])
 
-let rec subpage subp =
+let rec subpage subp (args : args) =
   let p = subp.Subpage.content in
-  if Link.should_inline p.url then [] else [ render p ]
+  if Link.should_inline p.url then [] else [ render p args ]
 
-and render (p : Page.t) =
-  let content fmt = Format.fprintf fmt "%a" Markup.pp (page p) in
-  let children = Utils.flatmap ~f:subpage @@ Subpages.compute p in
+and render (p : Page.t) args =
+  let content fmt = Format.fprintf fmt "%a" Markup.pp (page p args) in
+  let children =
+    Utils.flatmap ~f:(fun sp -> subpage sp args) (Subpages.compute p)
+  in
   let filename = Link.as_filename p.url in
   { Odoc_document.Renderer.filename; content; children }

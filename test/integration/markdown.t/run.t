@@ -37,7 +37,7 @@
   
   ######      `` lname : string; `` 
   
-  ###### }
+  }
   
   
   ## Label
@@ -53,6 +53,30 @@
   - p1
   p2
   
+  ###### module Foo : sig
+  
+  ######     type foo
+  
+  ######     type poly = [ 
+  ######          `` |  ``  `` `Mon `` 
+  
+  
+  ######          `` |  ``  `` `Tue `` 
+  
+   ]
+  
+  ######     type name = {
+  ######          `` fname : string; `` 
+  
+  
+  ######          `` lname : string; `` 
+  
+  }
+  
+  
+  ###### end
+  
+  The end foo end keyword in doc comment.
   $ odoc markdown-generate test.odocl -o markdown --generate-links
   $ cat markdown/Test.md
   Test
@@ -96,7 +120,7 @@
   <a id="type-name.lname"></a>
   ######     lname : string;
   
-  ###### }
+  }
   
   
   ## Label
@@ -112,8 +136,44 @@
   - p1
   p2
   
+  <a id="module-Foo"></a>
+  ###### module Foo : sig
+  
+  <a id="type-foo"></a>
+  ######     type foo
+  
+  <a id="type-poly"></a>
+  ######     type poly = [ 
+  
+  <a id="type-poly.Mon"></a>
+  ######         | `Mon
+  
+  
+  
+  <a id="type-poly.Tue"></a>
+  ######         | `Tue
+  
+   ]
+  
+  <a id="type-name"></a>
+  ######     type name = {
+  
+  <a id="type-name.fname"></a>
+  ######         fname : string;
+  
+  
+  
+  <a id="type-name.lname"></a>
+  ######         lname : string;
+  
+  }
+  
+  
+  ###### end
+  
+  The end foo end keyword in doc comment.
 
-  $ odoc markdown-generate test.odocl -o markdown --md-flavour=pandoc
+  $ odoc markdown-generate test.odocl -o markdown --flavour=pandoc
   $ cat markdown/Test.md
   Test
   
@@ -146,7 +206,7 @@
   
   ######      `` lname : string; `` 
   
-  ###### }
+  }
   
   
   ## Label {#foo}
@@ -162,3 +222,27 @@
   - p1
   p2
   
+  ###### module Foo : sig
+  
+  ######     type foo
+  
+  ######     type poly = [ 
+  ######          `` |  ``  `` `Mon `` 
+  
+  
+  ######          `` |  ``  `` `Tue `` 
+  
+   ]
+  
+  ######     type name = {
+  ######          `` fname : string; `` 
+  
+  
+  ######          `` lname : string; `` 
+  
+  }
+  
+  
+  ###### end
+  
+  The end foo end keyword in doc comment.
