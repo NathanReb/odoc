@@ -581,17 +581,9 @@ module Odoc_markdown = Make_renderer (struct
     let doc = "Generate links in markdown." in
     Arg.(value & flag (info ~doc [ "generate-links" ]))
 
-  let flavour =
-    let doc =
-      "The markdown renderer you are targeting, though only\n\
-      \    Pandoc and Github Flavoured Markdown are supported, the default \
-       being GFM."
-    in
-    Arg.(value & opt string "" & info ~docv:"FLAVOUR" ~doc [ "flavour" ])
-
   let extra_args =
-    let f generate_links flavour = { Markdown.generate_links; flavour } in
-    Term.(const f $ generate_links $ flavour)
+    let f generate_links = { Markdown.generate_links } in
+    Term.(const f $ generate_links)
 end)
 
 module Depends = struct

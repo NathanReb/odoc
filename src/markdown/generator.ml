@@ -150,7 +150,7 @@ let style (style : style) content =
 
 let make_hashes n = String.make n '#'
 
-type args = { generate_links : bool; flavour : string }
+type args = { generate_links : bool }
 
 let rec source_code (s : Source.t) nbsp args =
   match s with
@@ -263,22 +263,15 @@ let heading { Heading.label; level; title } nbsp args =
     (* We can be sure that h6 will never be exceded! *)
   in
   match label with
-  | Some label -> (
-      let label = str " {#%s}" label in
+  | Some _ -> (
       (* `---` forms a horizontal line below heading, except level one headings (h1)*)
       let sep = str "---" in
       let heading' level = string level ++ space ++ title in
-      let cond then_clause else_clause =
-        if args.flavour = "pandoc" then then_clause else else_clause
-      in
       match level with
       (* This match forms a horizontal line below the heading (for readability reasons),
          however, we ignore `h1` heading because by default a line is formed below it. *)
-      | "#" -> cond (heading' level ++ label) (heading' level)
-      | _ ->
-          cond
-            (heading' level ++ label ++ break ++ sep)
-            (heading' level ++ break ++ sep))
+      | "#" -> heading' level
+      | _ -> heading' level ++ break ++ sep)
   | None -> string level ++ title
 
 let inline_subpage = function

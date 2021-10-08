@@ -1,11 +1,10 @@
 open Odoc_document
 
-type args = { generate_links : bool; flavour : string }
+type args = { generate_links : bool }
 
 let render (args : args) (page : Odoc_document.Types.Page.t) :
     Odoc_document.Renderer.page =
-  Odoc_markdown.Generator.render page
-    { flavour = args.flavour; generate_links = args.generate_links }
+  Odoc_markdown.Generator.render page { generate_links = args.generate_links }
 
 let files_of_url url = Odoc_markdown.Link.files_of_url url
 
