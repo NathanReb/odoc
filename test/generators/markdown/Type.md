@@ -1,218 +1,413 @@
 Type
 
-Module  `` Type `` 
 
-###### type abstract
 
-Some _documentation_.
+######  type       abstract             
 
-###### type alias = int
+Some   _documentation _ . 
 
-###### type private_ = private int
 
-###### type 'a constructor = 'a
 
-###### type arrow = int -> int
+######  type       alias      =   int          
 
-###### type higher_order = (int -> int) -> int
 
-###### type labeled = l:int -> int
 
-###### type optional = ?l:int -> int
+######  type       private_      =    private       int          
 
-###### type labeled_higher_order = (l:int -> int) -> (?l:int -> int) -> int
 
-###### type pair = int * int
 
-###### type parens_dropped = int * int
+######  type        'a     constructor        =    'a            
 
-###### type triple = int * int * int
 
-###### type nested_pair = (int * int) * int
 
-###### type instance = int constructor
+######  type       arrow      =    int                   int          
 
-###### type long = labeled_higher_order -> [ `Bar | `Baz of triple ] -> pair -> labeled -> higher_order -> (string -> int) -> (int * float * char * string * char * unit) option -> nested_pair -> arrow -> string -> nested_pair array
 
-###### type variant_e = {
-######      `` a : int; `` 
 
-}
+######  type       higher_order      =     (   int                   int  )                     int          
 
-###### type variant = 
-######     | A
 
 
-######     | B of int
+######  type       labeled      =    l  :  int                   int          
 
 
-######     | C
 
-foo
+######  type       optional      =    ?  l  :  int                   int          
 
 
-######     | D
 
-_bar_
+######  type       labeled_higher_order      =     (   l  :  int                   int  )                       (   ?  l  :  int                   int  )                     int          
 
 
-######     | E of variant_e
 
+######  type       pair      =   int   *   int          
 
 
-###### type variant_c = {
-######      `` a : int; `` 
 
-}
+######  type       parens_dropped      =   int   *   int          
 
-###### type _ gadt = 
-######     | A : int gadt
 
 
-######     | B : int -> string gadt
+######  type       triple      =   int   *   int   *   int          
 
 
-######     | C : variant_c -> unit gadt
 
+######  type       nested_pair      =    (  int   *   int  )     *   int          
 
 
-###### type degenerate_gadt = 
-######     | A : degenerate_gadt
 
+######  type       instance      =    int     constructor               
 
 
-###### type private_variant = private 
-######     | A
 
+######  type       long      =    labeled_higher_order                        [   `Bar       | `Baz     of   triple        ]                      pair                       labeled                       higher_order                        (   string                   int  )                        (  int   *   float   *   char   *   string   *   char   *   unit  )       option                      nested_pair                       arrow                       string                    nested_pair        array            
 
 
-###### type record = {
-######      `` a : int; `` 
 
+######  type       variant_e         =      {    
 
-######      `` mutable b : int; `` 
 
+###### a   :   int  ;     
 
-######      `` c : int; `` 
+ }          
 
-foo
 
 
-######      `` d : int; `` 
+######  type       variant         =     
 
-_bar_
 
+###### |       A      
 
-######      `` e : a. 'a; `` 
 
-}
 
-###### type polymorphic_variant = [ 
-######      `` |  ``  `` `A `` 
 
 
-######      `` |  ``  `` `B of int `` 
 
+###### |       B        of       int    
 
-######      `` |  ``  `` `C of int * unit `` 
 
 
-######      `` |  ``  `` `D `` 
 
- ]
 
-###### type polymorphic_variant_extension = [ 
-######      `` |  ``  `` polymorphic_variant `` 
 
+###### |       C      
 
-######      `` |  ``  `` `E `` 
+foo 
 
- ]
 
-###### type nested_polymorphic_variant = [ 
-######      `` |  ``  `` `A of [ `B | `C ] `` 
 
- ]
 
-###### type private_extenion#row
 
-###### and private_extenion = private [> 
-######      `` |  ``  `` polymorphic_variant `` 
 
- ]
+###### |       D      
 
-###### type object_ = < a : int; b : int; c : int; >
+_bar _ 
 
-###### module type X = sig
 
-######     type t
 
-######     type u
 
 
-###### end
 
-###### type module_ = (module X)
+###### |       E        of       variant_e       
 
-###### type module_substitution = (module X with type t = int and type u = unit)
+      
 
-###### type +'a covariant
 
-###### type -'a contravariant
 
-###### type _ bivariant = int
+######  type       variant_c         =      {    
 
-###### type ('a, 'b) binary
 
-###### type using_binary = (int, int) binary
+###### a   :   int  ;     
 
-###### type 'custom name
+ }          
 
-###### type 'a constrained = 'a constraint 'a = int
 
-###### type 'a exact_variant = 'a constraint 'a = [ `A | `B of int ]
 
-###### type 'a lower_variant = 'a constraint 'a = [> `A | `B of int ]
+######  type        _     gadt           =     
 
-###### type 'a any_variant = 'a constraint 'a = [>  ]
 
-###### type 'a upper_variant = 'a constraint 'a = [< `A | `B of int ]
+###### |       A       :      int     gadt         
 
-###### type 'a named_variant = 'a constraint 'a = [< polymorphic_variant ]
 
-###### type 'a exact_object = 'a constraint 'a = < a : int; b : int; >
 
-###### type 'a lower_object = 'a constraint 'a = < a : int; b : int; .. >
 
-###### type 'a poly_object = 'a constraint 'a = < a : a. 'a; >
 
-###### type ('a, 'b) double_constrained = 'a * 'b constraint 'a = int constraint 'b = unit
 
-###### type as_ = int as 'a * 'a
+###### |       B     :   int                  string     gadt         
 
-###### type extensible = ..
 
-###### type extensible += 
-######     | Extension
 
-Documentation for  `` Extension `` .
 
 
-######     | Another_extension
 
-Documentation for  `` Another_extension `` .
+###### |       C     :   variant_c                     unit     gadt         
 
+      
 
 
-###### type mutually = 
-######     | A of recursive
 
+######  type       degenerate_gadt         =     
 
 
-###### and recursive = 
-######     | B of mutually
+###### |       A       :     degenerate_gadt       
 
+      
 
 
-###### exception Foo of int * int
+
+######  type       private_variant         =    private         
+
+
+###### |       A      
+
+      
+
+
+
+######  type       record         =      {    
+
+
+###### a   :   int  ;     
+
+
+
+
+
+
+######  mutable       b   :   int  ;     
+
+
+
+
+
+
+###### c   :   int  ;     
+
+foo 
+
+
+
+
+
+
+###### d   :   int  ;     
+
+_bar _ 
+
+
+
+
+
+
+###### e   :   a.    'a    ;     
+
+ }          
+
+
+
+######  type       polymorphic_variant      =      [     
+
+
+###### |       `A     
+
+
+
+
+
+
+###### |       `B      of       int     
+
+
+
+
+
+
+###### |       `C      of       int   *   unit     
+
+
+
+
+
+
+###### |       `D     
+
+  ]          
+
+
+
+######  type       polymorphic_variant_extension      =      [     
+
+
+###### |       polymorphic_variant        
+
+
+
+
+
+
+###### |       `E     
+
+  ]          
+
+
+
+######  type       nested_polymorphic_variant      =      [     
+
+
+###### |       `A      of        [   `B      | `C     ]       
+
+  ]          
+
+
+
+######  type       private_extenion#row             
+
+
+
+######  and       private_extenion      =    private          [>     
+
+
+###### |       polymorphic_variant        
+
+  ]          
+
+
+
+######  type       object_      =    <   a :   int  ;   b :   int  ;   c :   int  ;   >            
+
+
+
+######  module        type          X         =    sig      ######  type       t             
+
+
+
+######  type       u             
+
+
+
+       
+
+
+
+######  type       module_      =    (   module       X     )            
+
+
+
+######  type       module_substitution      =    (   module       X         with        type       t      =   int      and        type       u      =   unit  )            
+
+
+
+######  type        +'a     covariant               
+
+
+
+######  type        -'a     contravariant               
+
+
+
+######  type        _     bivariant        =   int          
+
+
+
+######  type        ('a, 'b)     binary               
+
+
+
+######  type       using_binary      =     (  int  ,   int  )       binary               
+
+
+
+######  type        'custom     name               
+
+
+
+######  type        'a     constrained        =    'a           constraint        'a     =   int       
+
+
+
+######  type        'a     exact_variant        =    'a           constraint        'a     =    [   `A       | `B     of   int     ]         
+
+
+
+######  type        'a     lower_variant        =    'a           constraint        'a     =    [>   `A       | `B     of   int     ]         
+
+
+
+######  type        'a     any_variant        =    'a           constraint        'a     =    [>    ]         
+
+
+
+######  type        'a     upper_variant        =    'a           constraint        'a     =    [<   `A       | `B     of   int     ]         
+
+
+
+######  type        'a     named_variant        =    'a           constraint        'a     =    [<   polymorphic_variant      ]         
+
+
+
+######  type        'a     exact_object        =    'a           constraint        'a     =    <   a :   int  ;   b :   int  ;   >         
+
+
+
+######  type        'a     lower_object        =    'a           constraint        'a     =    <   a :   int  ;   b :   int  ;   .. >         
+
+
+
+######  type        'a     poly_object        =    'a           constraint        'a     =    <   a :   a.    'a    ;   >         
+
+
+
+######  type        ('a, 'b)     double_constrained        =    'a     *    'b           constraint        'a     =   int      constraint        'b     =   unit       
+
+
+
+######  type       as_      =   int      as     '  a   *    'a            
+
+
+
+######  type       extensible         =      ..          
+
+
+
+######  type       extensible      +=     
+
+
+###### |       Extension      
+
+Documentation   for   Extension    . 
+
+
+
+
+
+
+###### |       Another_extension      
+
+Documentation   for   Another_extension    . 
+
+   
+
+
+
+######  type       mutually         =     
+
+
+###### |       A        of       recursive       
+
+      
+
+
+
+######  and       recursive         =     
+
+
+###### |       B        of       mutually       
+
+      
+
+
+
+######  exception           Foo        of       int   *   int       
+
+
 

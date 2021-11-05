@@ -1,30 +1,40 @@
 Interlude
 
-Module  `` Interlude `` 
+This   is   the   comment   associated   to   the   module. 
 
-This is the comment associated to the module.
 
-Some separate stray text at the top of the module.
 
-###### val foo : unit
+Some   separate   stray   text   at   the   top   of   the   module. 
 
-Foo.
+######  val       foo   :   unit    
 
-Some stray text that is not associated with any signature item.
+Foo. 
 
-It has multiple paragraphs.
 
-A separate block of stray text, adjacent to the preceding one.
 
-###### val bar : unit
+Some   stray   text   that   is   not   associated   with   any   signature   item. 
 
-Bar.
+It   has   multiple   paragraphs. 
 
-###### val multiple : unit
+A   separate   block   of   stray   text,   adjacent   to   the   preceding   one. 
 
-###### val signature : unit
+######  val       bar   :   unit    
 
-###### val items : unit
+Bar. 
 
-Stray text at the bottom of the module.
+
+
+######  val       multiple   :   unit    
+
+
+
+######  val       signature   :   unit    
+
+
+
+######  val       items   :   unit    
+
+
+
+Stray   text   at   the   bottom   of   the   module. 
 

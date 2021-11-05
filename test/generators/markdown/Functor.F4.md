@@ -1,19 +1,18 @@
-FunctorF4
+Functor
 
-Module  `` Functor.F4 `` 
-
-
-# Parameters
-
-###### module Arg : sig
-
-######     type t
+F4
 
 
-###### end
+
+# Parameters ######  module          Arg         :    sig      ######  type       t             
 
 
-# Signature
 
-###### type t
+       
+
+
+
+# Signature ######  type       t             
+
+
 

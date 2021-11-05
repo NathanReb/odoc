@@ -1,8 +1,18 @@
-OcamlaryAliasesP1Y
+Ocamlary
 
-Module  `` P1.Y `` 
+Aliases
 
-###### type t
+P1
 
-###### val id : t -> t
+Y
+
+
+
+######  type       t             
+
+
+
+######  val       id   :    t                      t       
+
+
 

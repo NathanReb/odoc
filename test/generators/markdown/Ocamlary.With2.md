@@ -1,11 +1,14 @@
-OcamlaryWith2
+Ocamlary
 
-Module  `` Ocamlary.With2 `` 
-
-###### module type S = sig
-
-######     type t
+With2
 
 
-###### end
+
+######  module        type          S         =    sig      ######  type       t             
+
+
+
+       
+
+
 

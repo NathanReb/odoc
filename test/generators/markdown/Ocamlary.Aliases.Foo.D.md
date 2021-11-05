@@ -1,8 +1,18 @@
-OcamlaryAliasesFooD
+Ocamlary
 
-Module  `` Foo.D `` 
+Aliases
 
-###### type t
+Foo
 
-###### val id : t -> t
+D
+
+
+
+######  type       t             
+
+
+
+######  val       id   :    t                      t       
+
+
 

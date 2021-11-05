@@ -1,5 +1,7 @@
 (** {1 This is a heading }*)
 
+(** {2:label This has a label}*)
+
 type y'
 module X : sig
 
@@ -71,4 +73,15 @@ end
    {ul
      {- a}
      {- b}
+    } *)
+
+(** This is where I begin my thing from. *)
+(** {ol
+      {- one}
+      {- two}
+    } *)
+
+(** {ul
+      {- Mon}
+      {- Tue}
     } *)

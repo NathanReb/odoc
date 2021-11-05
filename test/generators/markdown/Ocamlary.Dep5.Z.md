@@ -1,8 +1,16 @@
-OcamlaryDep5Z
+Ocamlary
 
-Module  `` Dep5.Z `` 
+Dep5
 
-###### module X : Arg.T
+Z
 
-###### module Y = Dep3
+
+
+######  module          X      :   Arg.T          
+
+
+
+######  module          Y      =   Dep3          
+
+
 

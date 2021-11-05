@@ -1,6 +1,10 @@
-OcamlaryOne
+Ocamlary
 
-Module  `` Ocamlary.One `` 
+One
 
-###### type one
+
+
+######  type       one             
+
+
 

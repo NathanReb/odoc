@@ -1,24 +1,32 @@
-Recent_implFoo
+Recent_impl
 
-Module  `` Recent_impl.Foo `` 
-
-###### module A : sig
-
-######     type t = 
-######         | A
+Foo
 
 
 
+######  module          A         :    sig      ######  type       t         =     
 
-###### end
 
-###### module B : sig
+###### |       A      
 
-######     type t = 
-######         | B
-
+      
 
 
 
-###### end
+       
+
+
+
+######  module          B         :    sig      ######  type       t         =     
+
+
+###### |       B      
+
+      
+
+
+
+       
+
+
 

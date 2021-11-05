@@ -1,16 +1,18 @@
-OcamlaryDep11
+Ocamlary
 
-Module  `` Ocamlary.Dep11 `` 
-
-###### module type S = sig
-
-######     class  c : object
-
-######         method m : int
+Dep11
 
 
-######     end
+
+######  module        type          S         =    sig      ######  class              c         :    object      ######  method       m   :   int    
 
 
-###### end
+
+       
+
+
+
+       
+
+
 

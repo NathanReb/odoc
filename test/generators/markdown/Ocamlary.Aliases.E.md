@@ -1,8 +1,16 @@
-OcamlaryAliasesE
+Ocamlary
 
-Module  `` Aliases.E `` 
+Aliases
 
-###### type t
+E
 
-###### val id : t -> t
+
+
+######  type       t             
+
+
+
+######  val       id   :    t                      t       
+
+
 

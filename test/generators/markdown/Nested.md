@@ -1,142 +1,118 @@
 Nested
 
-Module  `` Nested `` 
+This   comment   needs   to   be   here   before   #235   is   fixed. 
 
-This comment needs to be here before #235 is fixed.
 
 
-# Module
+# Module ######  module          X         :    sig      # Type ######  type       t             
 
-###### module X : sig
+Some   type. 
 
 
-# Type
 
-######     type t
+# Values ######  val       x   :   t       
 
-Some type.
+The   value   of   x. 
 
 
-# Values
 
-######     val x : t
+       
 
-The value of x.
+This   is   module   X. 
 
 
-###### end
 
-This is module X.
+# Module   type ######  module        type          Y         =    sig      ### Type 
 
+---######  type       t             
 
-# Module type
+Some   type. 
 
-###### module type Y = sig
 
 
-### Type
----
+### Values 
 
-######     type t
+---######  val       y   :   t       
 
-Some type.
+The   value   of   y. 
 
 
-### Values
----
 
-######     val y : t
+       
 
-The value of y.
+This   is   module   type   Y. 
 
 
-###### end
 
-This is module type Y.
+# Functor ######  module          F         :    sig      # Type # Parameters ######  module          Arg1         :    sig      # Type ######  type       t             
 
+Some   type. 
 
-# Functor
 
-###### module F : sig
 
+# Values ######  val       y   :   t       
 
-# Type
+The   value   of   y. 
 
 
-# Parameters
 
-######     module Arg1 : sig
+       
 
 
-# Type
 
-######         type t
+######  module          Arg2         :    sig      # Type ######  type       t             
 
-Some type.
+Some   type. 
 
 
-# Values
 
-######         val y : t
+       
 
-The value of y.
 
 
-######     end
+# Signature ######  type       t      =   Arg1.t      *   Arg2.t             
 
-######     module Arg2 : sig
+Some   type. 
 
 
-# Type
 
-######         type t
+       
 
-Some type.
+This   is   a   functor   F. 
 
 
-######     end
 
+# Class ######  class        virtual              z         :    object      ######  val       y   :   int    
 
-# Signature
+Some   value. 
 
-######     type t = Arg1.t * Arg2.t
 
-Some type.
 
+######  val        mutable        virtual       y'   :   int    
 
-###### end
 
-This is a functor F.
 
+# Methods ######  method       z   :   int    
 
-# Class
+Some   method. 
 
-###### class virtual  z : object
 
-######     val y : int
 
-Some value.
+######  method        private        virtual       z'   :   int    
 
-######     val mutable virtual y' : int
 
 
-# Methods
+       
 
-######     method z : int
+This   is   class   z. 
 
-Some method.
 
-######     method private virtual z' : int
 
+######  class        virtual              inherits         :    object      ######  inherit       z       
 
-###### end
 
-This is class z.
 
-###### class virtual  inherits : object
+       
 
-######     inherit z
 
-
-###### end
 

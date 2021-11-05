@@ -1,6 +1,10 @@
-Ocamlaryone_method_class
+Ocamlary
 
-Class  `` Ocamlary.one_method_class `` 
+one_method_class
 
-###### method go : unit
+
+
+######  method       go   :   unit    
+
+
 

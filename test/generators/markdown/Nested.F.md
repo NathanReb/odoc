@@ -1,55 +1,48 @@
-NestedF
+Nested
 
-Module  `` Nested.F `` 
+F
 
-This is a functor F.
+This   is   a   functor   F. 
 
-Some additional comments.
-
-
-# Type
+Some   additional   comments. 
 
 
-# Parameters
 
-###### module Arg1 : sig
+# Type # Parameters ######  module          Arg1         :    sig      ### Type 
 
+---######  type       t             
 
-### Type
----
-
-######     type t
-
-Some type.
+Some   type. 
 
 
-### Values
----
 
-######     val y : t
+### Values 
 
-The value of y.
+---######  val       y   :   t       
 
-
-###### end
-
-###### module Arg2 : sig
+The   value   of   y. 
 
 
-### Type
----
 
-######     type t
-
-Some type.
+       
 
 
-###### end
+
+######  module          Arg2         :    sig      ### Type 
+
+---######  type       t             
+
+Some   type. 
 
 
-# Signature
 
-###### type t = Arg1.t * Arg2.t
+       
 
-Some type.
+
+
+# Signature ######  type       t      =   Arg1.t      *   Arg2.t             
+
+Some   type. 
+
+
 

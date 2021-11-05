@@ -1,8 +1,18 @@
-OcamlaryCanonicalTestBase_TestsC
+Ocamlary
 
-Module  `` Base_Tests.C `` 
+CanonicalTest
 
-###### type 'a t
+Base_Tests
 
-###### val id : 'a t -> 'a t
+C
+
+
+
+######  type        'a     t               
+
+
+
+######  val       id   :      'a       t                          'a       t         
+
+
 

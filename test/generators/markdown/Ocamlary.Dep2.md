@@ -1,33 +1,34 @@
-OcamlaryDep2
+Ocamlary
 
-Module  `` Ocamlary.Dep2 `` 
-
-
-# Parameters
-
-###### module Arg : sig
-
-######     module type S
-
-######     module X : sig
-
-######         module Y : S
+Dep2
 
 
-######     end
+
+# Parameters ######  module          Arg         :    sig      ######  module        type          S          
 
 
-###### end
+
+######  module          X         :    sig      ######  module          Y      :   S          
 
 
-# Signature
 
-###### module A : sig
-
-######     module Y : Arg.S
+       
 
 
-###### end
 
-###### module B = A.Y
+       
+
+
+
+# Signature ######  module          A         :    sig      ######  module          Y      :   Arg.S          
+
+
+
+       
+
+
+
+######  module          B      =   A.Y          
+
+
 

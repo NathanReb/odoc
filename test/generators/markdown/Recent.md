@@ -1,142 +1,220 @@
 Recent
 
-Module  `` Recent `` 
 
-###### module type S = sig
-###### end
 
-###### module type S1 = sig
+######  module        type          S         =    sig             
 
 
-## Parameters
----
 
-######     module _ : sig
-######     end
+######  module        type          S1         =    sig      ## Parameters 
 
+---######  module          _         :    sig             
 
-## Signature
----
 
 
-###### end
+## Signature 
 
-###### type variant = 
-######     | A
+---       
 
 
-######     | B of int
 
+######  type       variant         =     
 
-######     | C
 
-foo
+###### |       A      
 
 
-######     | D
 
-_bar_
 
 
-######     | E of {
-######      `` a : int; `` 
 
-}
+###### |       B        of       int    
 
 
 
-###### type _ gadt = 
-######     | A : int gadt
 
 
-######     | B : int -> string gadt
 
-foo
+###### |       C      
 
+foo 
 
-######     | C : {
-######      `` a : int; `` 
 
-} -> unit gadt
 
 
 
-###### type polymorphic_variant = [ 
-######      `` |  ``  `` `A `` 
 
+###### |       D      
 
-######      `` |  ``  `` `B of int `` 
+_bar _ 
 
 
-######      `` |  ``  `` `C `` 
 
-foo
 
 
-######      `` |  ``  `` `D `` 
 
-bar
+###### |       E        of          {    
 
- ]
 
-###### type empty_variant = |
+###### a   :   int  ;     
 
-###### type nonrec nonrec_ = int
+ }    
 
-###### type empty_conj = 
-######     | X : [< `X of & 'a & int * float ] -> empty_conj
+      
 
 
 
-###### type conj = 
-######     | X : [< `X of int & [< `B of int & float ] ] -> conj
+######  type        _     gadt           =     
 
 
+###### |       A       :      int     gadt         
 
-###### val empty_conj : [< `X of & 'a & int * float ]
 
-###### val conj : [< `X of int & [< `B of int & float ] ]
 
-###### module Z : sig
 
-######     module Y : sig
 
-######         module X : sig
 
-######             type 'a t
+###### |       B     :   int                  string     gadt         
 
+foo 
 
-######         end
 
 
-######     end
 
 
-###### end
 
-###### module X : sig
+###### |       C     :      {    
 
-######     module L := Z.Y
 
-######     type t = int Z.Y.X.t
+###### a   :   int  ;     
 
-######     type u := int
+ }                     unit     gadt         
 
-######     type v = u Z.Y.X.t
+      
 
 
-###### end
 
-###### module type PolyS = sig
+######  type       polymorphic_variant      =      [     
 
-######     type t = [ 
-######          `` |  ``  `` `A `` 
 
+###### |       `A     
 
-######          `` |  ``  `` `B `` 
 
- ]
 
 
-###### end
+
+
+###### |       `B      of       int     
+
+
+
+
+
+
+###### |       `C     
+
+foo 
+
+
+
+
+
+
+###### |       `D     
+
+bar 
+
+  ]          
+
+
+
+######  type       empty_variant         =      |          
+
+
+
+######  type        nonrec       nonrec_      =   int          
+
+
+
+######  type       empty_conj         =     
+
+
+###### |       X     :    [<    `X   of   &    'a     &   int   *   float     ]                   empty_conj       
+
+      
+
+
+
+######  type       conj         =     
+
+
+###### |       X     :    [<    `X   of   int   &    [<    `B   of   int   &   float     ]       ]                   conj       
+
+      
+
+
+
+######  val       empty_conj   :    [<    `X   of   &    'a     &   int   *   float     ]      
+
+
+
+######  val       conj   :    [<    `X   of   int   &    [<    `B   of   int   &   float     ]       ]      
+
+
+
+######  module          Z         :    sig      ######  module          Y         :    sig      ######  module          X         :    sig      ######  type        'a     t               
+
+
+
+       
+
+
+
+       
+
+
+
+       
+
+
+
+######  module          X         :    sig      ######  module       L   :=   Z.Y       
+
+
+
+######  type       t      =    int     Z.Y.X.t               
+
+
+
+######  type       u      :=   int          
+
+
+
+######  type       v      =    u        Z.Y.X.t               
+
+
+
+       
+
+
+
+######  module        type          PolyS         =    sig      ######  type       t      =      [     
+
+
+###### |       `A     
+
+
+
+
+
+
+###### |       `B     
+
+  ]          
+
+
+
+       
+
+
 

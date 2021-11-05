@@ -1,6 +1,10 @@
-OcamlaryOnly_a_module
+Ocamlary
 
-Module  `` Ocamlary.Only_a_module `` 
+Only_a_module
 
-###### type t
+
+
+######  type       t             
+
+
 

@@ -1,18 +1,22 @@
-OcamlaryWith6
+Ocamlary
 
-Module  `` Ocamlary.With6 `` 
-
-###### module type T = sig
-
-######     module M : sig
-
-######         module type S
-
-######         module N : S
+With6
 
 
-######     end
+
+######  module        type          T         =    sig      ######  module          M         :    sig      ######  module        type          S          
 
 
-###### end
+
+######  module          N      :   S          
+
+
+
+       
+
+
+
+       
+
+
 

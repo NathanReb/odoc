@@ -1,75 +1,80 @@
 Functor2
 
-Module  `` Functor2 `` 
-
-###### module type S = sig
-
-######     type t
 
 
-###### end
-
-###### module X : sig
+######  module        type          S         =    sig      ######  type       t             
 
 
-# Parameters
 
-######     module Y : sig
-
-######         type t
+       
 
 
-######     end
 
-######     module Z : sig
-
-######         type t
+######  module          X         :    sig      # Parameters ######  module          Y         :    sig      ######  type       t             
 
 
-######     end
+
+       
 
 
-# Signature
 
-######     type y_t = Y.t
-
-######     type z_t = Z.t
-
-######     type x_t = y_t
+######  module          Z         :    sig      ######  type       t             
 
 
-###### end
 
-###### module type XF = sig
-
-
-## Parameters
----
-
-######     module Y : sig
-
-######         type t
+       
 
 
-######     end
 
-######     module Z : sig
-
-######         type t
+# Signature ######  type       y_t      =   Y.t             
 
 
-######     end
+
+######  type       z_t      =   Z.t             
 
 
-## Signature
----
 
-######     type y_t = Y.t
-
-######     type z_t = Z.t
-
-######     type x_t = y_t
+######  type       x_t      =   y_t             
 
 
-###### end
+
+       
+
+
+
+######  module        type          XF         =    sig      ## Parameters 
+
+---######  module          Y         :    sig      ######  type       t             
+
+
+
+       
+
+
+
+######  module          Z         :    sig      ######  type       t             
+
+
+
+       
+
+
+
+## Signature 
+
+---######  type       y_t      =   Y.t             
+
+
+
+######  type       z_t      =   Z.t             
+
+
+
+######  type       x_t      =   y_t             
+
+
+
+       
+
+
 

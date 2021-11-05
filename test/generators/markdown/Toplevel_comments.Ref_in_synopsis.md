@@ -1,10 +1,14 @@
-Toplevel_commentsRef_in_synopsis
+Toplevel_comments
 
-Module  `` Toplevel_comments.Ref_in_synopsis `` 
+Ref_in_synopsis
 
- `` t `` .
+t    . 
 
-This reference should resolve in the context of this module, even when used as a synopsis.
+This   reference   should   resolve   in   the   context   of   this   module,   even   when   used   as   a   synopsis. 
 
-###### type t
+
+
+######  type       t             
+
+
 

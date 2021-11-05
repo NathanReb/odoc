@@ -1,11 +1,18 @@
-OcamlaryDep1XY
+Ocamlary
 
-Module  `` X.Y `` 
+Dep1
 
-###### class  c : object
+X
 
-######     method m : int
+Y
 
 
-###### end
+
+######  class              c         :    object      ######  method       m   :   int    
+
+
+
+       
+
+
 

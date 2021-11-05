@@ -1,6 +1,16 @@
-OcamlaryDep1XYc
+Ocamlary
 
-Class  `` Y.c `` 
+Dep1
 
-###### method m : int
+X
+
+Y
+
+c
+
+
+
+######  method       m   :   int    
+
+
 

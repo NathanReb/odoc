@@ -1,72 +1,50 @@
 Markup
 
-Module  `` Markup `` 
-
-Here, we test the rendering of comment markup.
+Here,   we   test   the   rendering   of   comment   markup. 
 
 
-# Sections
 
-Let's get these done first, because sections will be used to break up the rest of this test.
+# Sections Let's   get   these   done   first,   because   sections   will   be   used   to   break   up   the   rest   of   this   test. 
 
-Besides the section heading above, there are also
+Besides   the   section   heading   above,   there   are   also 
 
+## Subsection   headings 
 
-## Subsection headings
----
+---and 
 
-and
+### Sub-subsection   headings 
 
+---but   odoc   has   banned   deeper   headings.   There   are   also   title   headings,   but   they   are   only   allowed   in   mld   files. 
 
-### Sub-subsection headings
----
+### Anchors 
 
-but odoc has banned deeper headings. There are also title headings, but they are only allowed in mld files.
+---Sections   can   have   attached   Anchors  ,   and   it   is   possible   to   link    to   them.   Links   to   section   headers   should   not   be   set   in   source   code   style. 
 
+#### Paragraph 
 
-### Anchors
----
+---Individual   paragraphs   can   have   a   heading. 
 
-Sections can have attached Anchors, and it is possible to link to them. Links to section headers should not be set in source code style.
+##### Subparagraph 
 
+---Parts   of   a   longer   paragraph   that   can   be   considered   alone   can   also   have   headings. 
 
-#### Paragraph
----
+# Styling This   paragraph   has   some   styled   elements:   **bold **   and   _italic _ ,   **_bold   italic _ ** ,   _emphasis _ ,   __emphasis _   within   emphasis _ ,   **_bold   italic _ ** ,   super <sup>script </sup> ,   sub <sub>script </sub> .   The   line   spacing   should   be   enough   for   superscripts   and   subscripts   not   to   look   odd. 
 
-Individual paragraphs can have a heading.
+Note:   _In   italics   _emphasis _   is   rendered   as   normal   text   while   _emphasis   _in _   emphasis _   is   rendered   in   italics. _   _It   also   work   the   same   in   [links   in   italics   with   _emphasis   _in _   emphasis _ . ](#) _ 
 
+code     is   a   different   kind   of   markup   that   doesn't   allow   nested   markup. 
 
-##### Subparagraph
----
+It's   possible   for   two   markup   elements   to   appear   **next **   _to _   each   other   and   have   a   space,   and   appear   **next ** _to _   each   other   with   no   space.   It   doesn't   matter   **how **   _much _   space   it   was   in   the   source:   in   this   sentence,   it   was   two   space   characters.   And   in   this   one,   there   is   **a **   _newline _ . 
 
-Parts of a longer paragraph that can be considered alone can also have headings.
+This   is   also   true   between   _non- _ code     markup   _and _   code   . 
 
+Code   can   appear   **inside   other     markup ** .   Its   display   shouldn't   be   affected. 
 
-# Styling
+# Links   and   references This   is   a   [link ](#) .   It   sends   you   to   the   top   of   this   page.   Links   can   have   markup   inside   them:   [**bold ** ](#) ,   [_italics _ ](#) ,   [_emphasis _ ](#) ,   [super <sup>script </sup> ](#) ,   [sub <sub>script </sub> ](#) ,   and   [code   ](#) .   Links   can   also   be   nested   _[inside ](#) _   markup.   Links   cannot   be   nested   inside   each   other.   This   link   has   no   replacement   text:   [# ](#) .   The   text   is   filled   in   by   odoc.   This   is   a   shorthand   link:   [# ](#) .   The   text   is   also   filled   in   by   odoc   in   this   case. 
 
-This paragraph has some styled elements: **bold** and _italic_, **_bold italic_**, _emphasis_, __emphasis_ within emphasis_, **_bold italic_**, super<sup>script</sup>, sub<sub>script</sub>. The line spacing should be enough for superscripts and subscripts not to look odd.
+This   is   a   reference   to   foo    .   References   can   have   replacement   text:   the   value   foo  .   Except   for   the   special   lookup   support,   references   are   pretty   much   just   like   links.   The   replacement   text   can   have   nested   styles:   **bold **  ,   _italic _  ,   _emphasis _  ,   super <sup>script </sup>  ,   sub <sub>script </sub>  ,   and   code    .   It's   also   possible   to   surround   a   reference   in   a   style:   **foo    ** .   References   can't   be   nested   inside   references,   and   links   and   references   can't   be   nested   inside   each   other. 
 
-Note: _In italics _emphasis_ is rendered as normal text while _emphasis _in_ emphasis_ is rendered in italics._ _It also work the same in links in italics with _emphasis _in_ emphasis_._
-
- `` code ``  is a different kind of markup that doesn't allow nested markup.
-
-It's possible for two markup elements to appear **next** _to_ each other and have a space, and appear **next**_to_ each other with no space. It doesn't matter **how** _much_ space it was in the source: in this sentence, it was two space characters. And in this one, there is **a** _newline_.
-
-This is also true between _non-_ `` code ``  markup _and_  `` code `` .
-
-Code can appear **inside  `` other ``  markup**. Its display shouldn't be affected.
-
-
-# Links and references
-
-This is a link. It sends you to the top of this page. Links can have markup inside them: **bold**, _italics_, _emphasis_, super<sup>script</sup>, sub<sub>script</sub>, and  `` code `` . Links can also be nested _inside_ markup. Links cannot be nested inside each other. This link has no replacement text: #. The text is filled in by odoc. This is a shorthand link: #. The text is also filled in by odoc in this case.
-
-This is a reference to  `` foo `` . References can have replacement text: the value foo. Except for the special lookup support, references are pretty much just like links. The replacement text can have nested styles: **bold**, _italic_, _emphasis_, super<sup>script</sup>, sub<sub>script</sub>, and  `` code `` . It's also possible to surround a reference in a style: ** `` foo `` **. References can't be nested inside references, and links and references can't be nested inside each other.
-
-
-# Preformatted text
-
-This is a code block:
+# Preformatted   text This   is   a   code   block: 
 
 let foo = ()
 (** There are some nested comments in here, but an unpaired comment
@@ -74,138 +52,184 @@ let foo = ()
     best to keep code blocks no wider than 72 characters. *)
 
 let bar =
-  ignore fooThere are also verbatim blocks:
+  ignore foo  
 
-    The main difference is these don't get syntax highlighting.
+There   are   also   verbatim   blocks: 
 
-# Lists
+```
+The main difference is these don't get syntax highlighting.
+```
 
-- This is a
+# Lists - This   is   a 
+          
+          
+
+- shorthand   bulleted   list, 
   
-- shorthand bulleted list,
   
-- and the paragraphs in each list item support _styling_.
-  1. This is a
+
+- and   the   paragraphs   in   each   list   item   support   _styling _ . 
+  
+  
+
+1. This   is   a 
+   
+   
+
+2. shorthand   numbered   list. 
+   
+   
+
+- Shorthand   list   items   can   span   multiple   lines,   however   trying   to   put   two   paragraphs   into   a   shorthand   list   item   using   a   double   line   break 
+  
+  
+
+just   creates   a   paragraph   outside   the   list. 
+
+- Similarly,   inserting   a   blank   line   between   two   list   items 
+  
+  
+
+- creates   two   separate   lists. 
+  
+  
+
+- To   get   around   this   limitation,   one 
+  
+  can   use   explicitly-delimited   lists. 
+  
+  
+
+- This   one   is   bulleted, 
+  
+  
+
+1. but   there   is   also   the   numbered   variant. 
+   
+   
+
+- - lists 
     
-2. shorthand numbered list.
-  - Shorthand list items can span multiple lines, however trying to put two paragraphs into a shorthand list item using a double line break
-    just creates a paragraph outside the list.
+    
+  
+  - can   be   nested 
+    
+    
+  
+  - and   can   include   references 
+    
+    
+  
+  - foo    
+    
+    
+  
+  
 
-- Similarly, inserting a blank line between two list items
-  - creates two separate lists.
-    - To get around this limitation, one
-      
-      can use explicitly-delimited lists.
-      
-      
-      
-- This one is bulleted,
-  1. but there is also the numbered variant.
-    - - lists
-        
-      - can be nested
-        
-      - and can include references
-        
-      -  `` foo `` 
-        
-      
-# Unicode
+# Unicode The   parser   supports   any   ASCII-compatible   encoding,   in   particuλar   UTF-8. 
 
-The parser supports any ASCII-compatible encoding, in particuλar UTF-8.
+# Raw   HTML Raw   HTML   can   be      as   inline   elements   into   sentences. 
 
 
-# Raw HTML
+    <blockquote>
+      If the raw HTML is the only thing in a paragraph, it is treated as a block
+      element, and won't be wrapped in paragraph tags by the HTML generator.
+    </blockquote>
+    
 
-Raw HTML can be  as inline elements into sentences.
+# Modules @X     : 
 
 
-# Modules
 
+@X     : 
 
-@ `` X ``  : 
 
 
+@Y     : 
 
-@ `` X ``  : 
 
 
+# Tags Each   comment   can   end   with   zero   or   more   tags.   Here   are   some   examples: 
 
-@ `` Y ``  : 
+@author  : 
 
+antron 
 
-# Tags
 
-Each comment can end with zero or more tags. Here are some examples:
 
+@deprecated  : 
 
-@author : antron
+a   _long _   time   ago 
 
 
 
-@deprecated : a _long_ time ago
+@parameter   foo  : 
 
+unused 
 
 
 
+@raises   Failure  : 
 
-@parameter foo : unused
+always 
 
 
 
+@returns  : 
 
+never 
 
-@raises Failure : always
 
 
+@see   [# ](#)  : 
 
+this   url 
 
 
-@returns : never
 
+@see   foo.ml    : 
 
+this   file 
 
 
 
-@see # : this url
+@see   Foo  : 
 
+this   document 
 
 
 
+@since  : 
 
-@see  `` foo.ml ``  : this file
+0 
 
 
 
+@before   1.0  : 
 
+it   was   in   b <sup>e </sup> t <sub>a </sub> 
 
-@see Foo : this document
 
 
+@version  : 
 
+-1 
 
 
-@since : 0
 
+######  val       foo   :   unit    
 
+Comments   in   structure   items   **support **   _markup _ ,   t <sup>o </sup> <sub>o </sub> . 
 
-@before 1.0 : it was in b<sup>e</sup>t<sub>a</sub>
 
 
+Some   modules   to   support   references. 
 
+######  module          X         :    sig             
 
 
-@version : -1
 
-###### val foo : unit
+######  module          Y         :    sig             
 
-Comments in structure items **support** _markup_, t<sup>o</sup><sub>o</sub>.
 
-Some modules to support references.
-
-###### module X : sig
-###### end
-
-###### module Y : sig
-###### end
 

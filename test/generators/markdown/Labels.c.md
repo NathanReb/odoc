@@ -1,7 +1,7 @@
-Labelsc
+Labels
 
-Class  `` Labels.c `` 
+c
 
 
-# Attached to class
 
+# Attached   to   class 

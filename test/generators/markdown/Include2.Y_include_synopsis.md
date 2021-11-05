@@ -1,8 +1,12 @@
-Include2Y_include_synopsis
+Include2
 
-Module  `` Include2.Y_include_synopsis `` 
+Y_include_synopsis
 
-The  `` include Y ``  below should have the synopsis from  `` Y `` 's top-comment attached to it.
+The   include Y     below   should   have   the   synopsis   from   Y   's   top-comment   attached   to   it. 
 
-###### type t = Y.t
+
+
+######  type       t      =   Y.t             
+
+
 

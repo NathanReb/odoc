@@ -1,13 +1,18 @@
-OcamlaryWith3
+Ocamlary
 
-Module  `` Ocamlary.With3 `` 
-
-###### module M = With2
-
-###### module N : sig
-
-######     type t
+With3
 
 
-###### end
+
+######  module          M      =   With2          
+
+
+
+######  module          N         :    sig      ######  type       t             
+
+
+
+       
+
+
 

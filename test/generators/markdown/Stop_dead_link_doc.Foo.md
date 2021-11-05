@@ -1,6 +1,10 @@
-Stop_dead_link_docFoo
+Stop_dead_link_doc
 
-Module  `` Stop_dead_link_doc.Foo `` 
+Foo
 
-###### type t
+
+
+######  type       t             
+
+
 

@@ -1,49 +1,60 @@
-OcamlaryCollectionModule
+Ocamlary
 
-Module  `` Ocamlary.CollectionModule `` 
+CollectionModule
 
-This comment is for  `` CollectionModule `` .
-
-###### type collection
-
-This comment is for  `` collection `` .
-
-###### type element
-
-###### module InnerModuleA : sig
-
-######     type t = collection
-
-This comment is for  `` t `` .
-
-######     module InnerModuleA' : sig
-
-######         type t = (unit, unit) a_function
-
-This comment is for  `` t `` .
+This   comment   is   for   CollectionModule   . 
 
 
-######     end
 
-This comment is for  `` InnerModuleA' `` .
+######  type       collection             
 
-######     module type InnerModuleTypeA' = sig
-
-######         type t = InnerModuleA'.t
-
-This comment is for  `` t `` .
+This   comment   is   for   collection   . 
 
 
-######     end
 
-This comment is for  `` InnerModuleTypeA' `` .
+######  type       element             
 
 
-###### end
 
-This comment is for  `` InnerModuleA `` .
+######  module          InnerModuleA         :    sig      ######  type       t      =   collection             
 
-###### module type InnerModuleTypeA = InnerModuleA.InnerModuleTypeA'
+This   comment   is   for   t   . 
 
-This comment is for  `` InnerModuleTypeA `` .
+
+
+######  module          InnerModuleA'         :    sig      ######  type       t      =     (  unit  ,   unit  )       a_function               
+
+This   comment   is   for   t   . 
+
+
+
+       
+
+This   comment   is   for   InnerModuleA'   . 
+
+
+
+######  module        type          InnerModuleTypeA'         =    sig      ######  type       t      =   InnerModuleA'.t             
+
+This   comment   is   for   t   . 
+
+
+
+       
+
+This   comment   is   for   InnerModuleTypeA'   . 
+
+
+
+       
+
+This   comment   is   for   InnerModuleA   . 
+
+
+
+######  module        type          InnerModuleTypeA      =   InnerModuleA.InnerModuleTypeA'          
+
+This   comment   is   for   InnerModuleTypeA   . 
+
+
 

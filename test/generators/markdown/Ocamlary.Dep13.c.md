@@ -1,6 +1,12 @@
-OcamlaryDep13c
+Ocamlary
 
-Class  `` Dep13.c `` 
+Dep13
 
-###### method m : int
+c
+
+
+
+######  method       m   :   int    
+
+
 

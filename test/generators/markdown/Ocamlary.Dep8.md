@@ -1,11 +1,14 @@
-OcamlaryDep8
+Ocamlary
 
-Module  `` Ocamlary.Dep8 `` 
-
-###### module type T = sig
-
-######     type t
+Dep8
 
 
-###### end
+
+######  module        type          T         =    sig      ######  type       t             
+
+
+
+       
+
+
 

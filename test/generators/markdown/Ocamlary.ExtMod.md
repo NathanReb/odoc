@@ -1,11 +1,19 @@
-OcamlaryExtMod
+Ocamlary
 
-Module  `` Ocamlary.ExtMod `` 
+ExtMod
 
-###### type t = ..
 
-###### type t += 
-######     | Leisureforce
+
+######  type       t         =      ..          
+
+
+
+######  type       t      +=     
+
+
+###### |       Leisureforce      
+
+   
 
 
 

@@ -1,6 +1,12 @@
-OcamlaryDoubleInclude1DoubleInclude2
+Ocamlary
 
-Module  `` DoubleInclude1.DoubleInclude2 `` 
+DoubleInclude1
 
-###### type double_include
+DoubleInclude2
+
+
+
+######  type       double_include             
+
+
 

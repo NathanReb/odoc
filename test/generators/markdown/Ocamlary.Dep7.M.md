@@ -1,8 +1,16 @@
-OcamlaryDep7M
+Ocamlary
 
-Module  `` Dep7.M `` 
+Dep7
 
-###### module type R = Arg.S
+M
 
-###### module Y : R
+
+
+######  module        type          R      =   Arg.S          
+
+
+
+######  module          Y      :   R          
+
+
 

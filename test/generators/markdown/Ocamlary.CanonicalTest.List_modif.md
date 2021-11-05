@@ -1,8 +1,16 @@
-OcamlaryCanonicalTestList_modif
+Ocamlary
 
-Module  `` CanonicalTest.List_modif `` 
+CanonicalTest
 
-###### type 'c t = 'c Base.List.t
+List_modif
 
-###### val id : 'a t -> 'a t
+
+
+######  type        'c     t        =     'c       Base.List.t               
+
+
+
+######  val       id   :      'a       t                          'a       t         
+
+
 

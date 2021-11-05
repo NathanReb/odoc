@@ -1,6 +1,14 @@
-OcamlaryDep6XY
+Ocamlary
 
-Module  `` X.Y `` 
+Dep6
 
-###### type d
+X
+
+Y
+
+
+
+######  type       d             
+
+
 

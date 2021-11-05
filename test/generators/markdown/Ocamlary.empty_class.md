@@ -1,4 +1,6 @@
-Ocamlaryempty_class
+Ocamlary
 
-Class  `` Ocamlary.empty_class `` 
+empty_class
+
+
 

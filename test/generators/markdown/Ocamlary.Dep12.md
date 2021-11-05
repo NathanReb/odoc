@@ -1,19 +1,18 @@
-OcamlaryDep12
+Ocamlary
 
-Module  `` Ocamlary.Dep12 `` 
-
-
-# Parameters
-
-###### module Arg : sig
-
-######     module type S
+Dep12
 
 
-###### end
+
+# Parameters ######  module          Arg         :    sig      ######  module        type          S          
 
 
-# Signature
 
-###### module type T = Arg.S
+       
+
+
+
+# Signature ######  module        type          T      =   Arg.S          
+
+
 

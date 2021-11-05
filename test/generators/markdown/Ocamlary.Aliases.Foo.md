@@ -1,49 +1,68 @@
-OcamlaryAliasesFoo
+Ocamlary
 
-Module  `` Aliases.Foo `` 
+Aliases
 
-###### module A : sig
-
-######     type t
-
-######     val id : t -> t
+Foo
 
 
-###### end
 
-###### module B : sig
-
-######     type t
-
-######     val id : t -> t
+######  module          A         :    sig      ######  type       t             
 
 
-###### end
 
-###### module C : sig
-
-######     type t
-
-######     val id : t -> t
+######  val       id   :    t                      t       
 
 
-###### end
 
-###### module D : sig
-
-######     type t
-
-######     val id : t -> t
+       
 
 
-###### end
 
-###### module E : sig
-
-######     type t
-
-######     val id : t -> t
+######  module          B         :    sig      ######  type       t             
 
 
-###### end
+
+######  val       id   :    t                      t       
+
+
+
+       
+
+
+
+######  module          C         :    sig      ######  type       t             
+
+
+
+######  val       id   :    t                      t       
+
+
+
+       
+
+
+
+######  module          D         :    sig      ######  type       t             
+
+
+
+######  val       id   :    t                      t       
+
+
+
+       
+
+
+
+######  module          E         :    sig      ######  type       t             
+
+
+
+######  val       id   :    t                      t       
+
+
+
+       
+
+
 

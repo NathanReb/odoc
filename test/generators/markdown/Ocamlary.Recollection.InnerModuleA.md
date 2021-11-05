@@ -1,32 +1,40 @@
-OcamlaryRecollectionInnerModuleA
+Ocamlary
 
-Module  `` Recollection.InnerModuleA `` 
+Recollection
 
-This comment is for  `` InnerModuleA `` .
+InnerModuleA
 
-###### type t = collection
-
-This comment is for  `` t `` .
-
-###### module InnerModuleA' : sig
-
-######     type t = (unit, unit) a_function
-
-This comment is for  `` t `` .
+This   comment   is   for   InnerModuleA   . 
 
 
-###### end
 
-This comment is for  `` InnerModuleA' `` .
+######  type       t      =   collection             
 
-###### module type InnerModuleTypeA' = sig
-
-######     type t = InnerModuleA'.t
-
-This comment is for  `` t `` .
+This   comment   is   for   t   . 
 
 
-###### end
 
-This comment is for  `` InnerModuleTypeA' `` .
+######  module          InnerModuleA'         :    sig      ######  type       t      =     (  unit  ,   unit  )       a_function               
+
+This   comment   is   for   t   . 
+
+
+
+       
+
+This   comment   is   for   InnerModuleA'   . 
+
+
+
+######  module        type          InnerModuleTypeA'         =    sig      ######  type       t      =   InnerModuleA'.t             
+
+This   comment   is   for   t   . 
+
+
+
+       
+
+This   comment   is   for   InnerModuleTypeA'   . 
+
+
 

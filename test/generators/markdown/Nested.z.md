@@ -1,23 +1,30 @@
-Nestedz
+Nested
 
-Class  `` Nested.z `` 
+z
 
-This is class z.
+This   is   class   z. 
 
-Some additional comments.
-
-###### val y : int
-
-Some value.
-
-###### val mutable virtual y' : int
+Some   additional   comments. 
 
 
-# Methods
 
-###### method z : int
+######  val       y   :   int    
 
-Some method.
+Some   value. 
 
-###### method private virtual z' : int
+
+
+######  val        mutable        virtual       y'   :   int    
+
+
+
+# Methods ######  method       z   :   int    
+
+Some   method. 
+
+
+
+######  method        private        virtual       z'   :   int    
+
+
 

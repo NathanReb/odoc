@@ -1,90 +1,90 @@
 Module_type_alias
 
-Module  `` Module_type_alias `` 
-
-Module Type Aliases
-
-###### module type A = sig
-
-######     type a
+Module   Type   Aliases 
 
 
-###### end
 
-###### module type B = sig
-
-
-## Parameters
----
-
-######     module C : sig
-
-######         type c
+######  module        type          A         =    sig      ######  type       a             
 
 
-######     end
+
+       
 
 
-## Signature
----
 
-######     type b
+######  module        type          B         =    sig      ## Parameters 
 
-
-###### end
-
-###### module type D = A
-
-###### module type E = sig
+---######  module          C         :    sig      ######  type       c             
 
 
-## Parameters
----
 
-######     module F : sig
-
-######         type f
+       
 
 
-######     end
 
-######     module C : sig
+## Signature 
 
-######         type c
-
-
-######     end
+---######  type       b             
 
 
-## Signature
----
 
-######     type b
+       
 
 
-###### end
 
-###### module type G = sig
-
-
-## Parameters
----
-
-######     module H : sig
-
-######         type h
+######  module        type          D      =   A          
 
 
-######     end
+
+######  module        type          E         =    sig      ## Parameters 
+
+---######  module          F         :    sig      ######  type       f             
 
 
-## Signature
----
 
-######     type a
+       
 
 
-###### end
 
-###### module type I = B
+######  module          C         :    sig      ######  type       c             
+
+
+
+       
+
+
+
+## Signature 
+
+---######  type       b             
+
+
+
+       
+
+
+
+######  module        type          G         =    sig      ## Parameters 
+
+---######  module          H         :    sig      ######  type       h             
+
+
+
+       
+
+
+
+## Signature 
+
+---######  type       a             
+
+
+
+       
+
+
+
+######  module        type          I      =   B          
+
+
 

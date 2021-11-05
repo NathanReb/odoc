@@ -1,8 +1,10 @@
 External
 
-Module  `` External `` 
 
-###### val foo : unit -> unit
 
-Foo _bar_.
+######  val       foo   :    unit                   unit    
+
+Foo   _bar _ . 
+
+
 

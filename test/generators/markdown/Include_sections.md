@@ -1,120 +1,94 @@
 Include_sections
 
-Module  `` Include_sections `` 
-
-###### module type Something = sig
-
-######     val something : unit
 
 
-## Something 1
----
-
-foo
-
-######     val foo : unit
+######  module        type          Something         =    sig      ######  val       something   :   unit    
 
 
-### Something 2
----
 
-######     val bar : unit
+## Something   1 
 
-foo bar
+---foo 
 
-
-## Something 1-bis
----
-
-Some text.
+######  val       foo   :   unit    
 
 
-###### end
 
-A module type.
+### Something   2 
 
-Let's include  `` Something ``  once
+---######  val       bar   :   unit    
 
-
-# Something 1
-
-foo
+foo   bar 
 
 
-## Something 2
----
+
+## Something   1-bis 
+
+---Some   text. 
+
+       
+
+A   module   type. 
 
 
-# Something 1-bis
 
-Some text.
+Let's   include   Something      once 
 
+# Something   1 foo 
 
-# Second include
+## Something   2 
 
-Let's include  `` Something ``  a second time: the heading level should be shift here.
+---# Something   1-bis Some   text. 
 
+# Second   include Let's   include   Something      a   second   time:   the   heading   level   should   be   shift   here. 
 
-## Something 1
----
+## Something   1 
 
-foo
+---foo 
 
+### Something   2 
 
-### Something 2
----
+---## Something   1-bis 
 
+---Some   text. 
 
-## Something 1-bis
----
+## Third   include 
 
-Some text.
+---Shifted   some   more. 
 
+### Something   1 
 
-## Third include
----
+---foo 
 
-Shifted some more.
+#### Something   2 
 
+---### Something   1-bis 
 
-### Something 1
----
+---Some   text. 
 
-foo
+And   let's   include   it   again,   but   without   inlining   it   this   time:   the   ToC   shouldn't   grow. 
 
-
-#### Something 2
----
+######  val       something   :   unit    
 
 
-### Something 1-bis
----
 
-Some text.
+### Something   1 
 
-And let's include it again, but without inlining it this time: the ToC shouldn't grow.
+---foo 
 
-###### val something : unit
+######  val       foo   :   unit    
 
 
-### Something 1
----
 
-foo
+#### Something   2 
 
-###### val foo : unit
+---######  val       bar   :   unit    
 
-
-#### Something 2
----
-
-###### val bar : unit
-
-foo bar
+foo   bar 
 
 
-### Something 1-bis
----
 
-Some text.
+### Something   1-bis 
+
+---Some   text. 
 

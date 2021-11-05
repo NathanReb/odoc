@@ -3,174 +3,229 @@ open Types
 open Doctree
 
 module Markup : sig
-  type t
+  (** The goal of this module is to allow to describe a markdown document and
+      to print it.
+      A markdown document is composed of [blocks]. *)
 
-  val noop : t
+  type inlines
+  (** Inlines elements are rendered one after the other, separated by spaces,
+      but not by empty line. *)
 
-  val break : t
+  val ( ++ ) : inlines -> inlines -> inlines
+  (** Combine inlines. *)
 
-  val nbsp : t
+  val join : inlines -> inlines -> inlines
 
-  val space : t
+  type blocks
+  (** A block is composed of [inlines]. Blocks are separated by an empty line. *)
 
-  val indent : int -> t -> t
+  val joinB : blocks -> blocks -> blocks
 
-  val backticks : t
+  val ordered_list : blocks list -> blocks
 
-  val open_sq_bracket : t
+  val unordered_list : blocks list -> blocks
 
-  val close_sq_bracket : t
+  val blocks : blocks -> blocks -> blocks
+  (** Combine blocks. *)
 
-  val ( ++ ) : t -> t -> t
+  val block_separator : blocks
+  (** A horizontal line between a heading and the body. *)
 
-  val concat : t list -> t
+  val text : string -> inlines
+  (** Some inline elements *)
 
-  val block' : t list -> t
+  val line_break : inlines
 
-  val list : ?sep:t -> t list -> t
+  (* val nbsp : inlines *)
 
-  val anchor' : string -> t
+  val bold : inlines -> inlines
 
-  val string : string -> t
+  val italic : inlines -> inlines
 
-  val str : ('a, unit, string, t) format4 -> 'a
+  val superscript : inlines -> inlines
 
-  val escaped : ('a, unit, string, t) format4 -> 'a
+  val subscript : inlines -> inlines
 
-  val open_parenthesis : t
+  val link : href:string -> inlines -> inlines
+  (** Arbitrary link. *)
 
-  val close_parenthesis : t
+  val anchor' : string -> inlines
 
-  val pp : Format.formatter -> t -> unit
+  val raw_markup : string -> blocks
+
+  (* val code_span : string -> inlines *)
+
+  val paragraph : inlines -> blocks
+
+  val code_block : string -> blocks
+
+  val heading : int -> inlines -> blocks
+
+  val noopI : inlines
+
+  val noopB : blocks
+
+  (* val pp_inlines : Format.formatter -> inlines -> unit *)
+
+  val pp_blocks : Format.formatter -> blocks -> unit
+  (** Renders a markdown document. *)
 end = struct
-  type t =
-    | Block of t list
-    | Concat of t list
-    | Break
-    | Space
-    | Indent of int * t
-    | Anchor of string
+  (* What we need in the markdown generator:
+     Special syntaxes:
+     - Pandoc's heading attributes
+  *)
+
+  type inlines =
     | String of string
-    | Backticks
-    | Nbsp
-    | OpenSqBracket
-    | CloseSqBracket
-    | OpenParenthesis
-    | CloseParenthesis
+    | ConcatI of inlines * inlines
+    | Join of inlines * inlines
+        (** [Join] constructor is for joining [inlines] without spaces between them. *)
+    | Link of string * inlines
+    | Anchor of string
+    | Linebreak
+    (* | Nbsp *)
+    | NoopI
 
-  let noop = Concat []
+  and blocks =
+    | ConcatB of blocks * blocks
+    | Block of inlines
+    | CodeBlock of string
+    | List of list_type * blocks list
+    | Raw_markup of string
+    | Block_separator
+    | NoopB
+    | JoinB of blocks * blocks
 
-  let break = Break
+  and list_type = Ordered | Unordered
 
-  let nbsp = Nbsp
+  let ordered_list bs = List (Ordered, bs)
 
-  let space = Space
+  let unordered_list bs = List (Unordered, bs)
 
-  let indent i content = Indent (i, content)
+  let noopI = NoopI
 
-  let backticks = Backticks
+  let noopB = NoopB
 
-  let open_sq_bracket, close_sq_bracket = (OpenSqBracket, CloseSqBracket)
+  let ( ++ ) left right = ConcatI (left, right)
 
-  let open_parenthesis, close_parenthesis = (OpenParenthesis, CloseParenthesis)
+  let join left right = Join (left, right)
 
-  let append t1 t2 =
-    match (t1, t2) with
-    | Concat l1, Concat l2 -> Concat (l1 @ l2)
-    | Concat l1, e2 -> Concat (l1 @ [ e2 ])
-    | e1, Concat l2 -> Concat (e1 :: l2)
-    | e1, e2 -> Concat [ e1; e2 ]
+  let joinB left right = JoinB (left, right)
 
-  let ( ++ ) = append
+  (*TODO: Can we find a better name for this, like it is for combining inlines? *)
+  let blocks above below = ConcatB (above, below)
 
-  let concat ts = Concat ts
+  let block_separator = Block_separator
 
-  let rec intersperse ~sep = function
-    | [] -> []
-    | [ h ] -> [ h ]
-    | h1 :: (_ :: _ as t) -> h1 :: sep :: intersperse ~sep t
+  let text s = String s
 
-  let list ?(sep = Concat []) l = concat @@ intersperse ~sep l
+  let line_break = Linebreak
 
-  let anchor' s = Anchor s
+  (* let nbsp = Nbsp *)
 
-  let string s = String s
+  let bold i = Join (String "**", Join (i, String "**"))
 
-  let block' ts = Block ts
+  let italic i = Join (String "_", Join (i, String "_"))
 
-  let str fmt = Format.ksprintf (fun s -> string s) fmt
+  let subscript i = Join (String "<sub>", Join (i, String "</sub>"))
 
-  let escaped fmt = Format.ksprintf (fun s -> string s) fmt
+  let superscript i = Join (String "<sup>", Join (i, String "</sup>"))
 
-  let rec pp fmt t =
-    match t with
-    | Block b ->
-        let inner = function
-          | [] -> ()
-          | [ x ] -> Format.fprintf fmt "%a" pp x
-          | x :: xs -> Format.fprintf fmt "%a@\n%a" pp x pp (Block xs)
-        in
-        inner b
-    | Concat l -> pp_many fmt l
-    | Break -> Format.fprintf fmt "@\n"
-    | Space -> Format.fprintf fmt " "
-    | Indent (i, content) -> Format.fprintf fmt "@[<%i>%a@]" i pp content
-    | Anchor s -> Format.fprintf fmt "<a id=\"%s\"></a>" s
+  (* let code_span s =
+     if String.contains s '`' then
+       Join (String "``", Join (String s, String "``"))
+     else Join (String "`", Join (String s, String "`")) *)
+
+  let link ~href i = Link (href, i)
+
+  let anchor' i = Anchor i
+
+  let raw_markup s = Raw_markup s
+
+  let paragraph i = Block i
+
+  let code_block s = CodeBlock s
+
+  let make_hashes n = String.make n '#'
+
+  let heading level i =
+    let hashes = make_hashes level in
+    Block (String hashes ++ i)
+
+  let pp_list_item fmt list_type (b : blocks) n pp_blocks =
+    match list_type with
+    | Unordered -> Format.fprintf fmt "- @[%a@]" pp_blocks b
+    | Ordered -> Format.fprintf fmt "%d. @[%a@]" (n + 1) pp_blocks b
+
+  let rec pp_inlines fmt i =
+    match i with
     | String s -> Format.fprintf fmt "%s" s
-    (*TODO: plese remove this comment when the backticks issues is resolved *)
-    (* We use double backticks to take care of polymorphic variants or content
-       within backtick, and the spaces before and after the backticks for
-       clarity on what should be enclosed in backticks. For example,
-       "type nums = [ | `One | `Two ]" would be rendered as "``|`````Monday`` "
-       if the spaces were missing.
-    *)
-    | Backticks -> Format.fprintf fmt " `` "
-    | Nbsp -> Format.fprintf fmt "\u{00A0}"
-    | OpenSqBracket -> Format.fprintf fmt "["
-    | CloseSqBracket -> Format.fprintf fmt "]"
-    | OpenParenthesis -> Format.fprintf fmt "("
-    | CloseParenthesis -> Format.fprintf fmt ")"
+    | ConcatI (left, right) ->
+        Format.fprintf fmt "%a %a" pp_inlines left pp_inlines right
+    | Join (left, right) ->
+        Format.fprintf fmt "%a%a" pp_inlines left pp_inlines right
+    | Link (href, i) -> Format.fprintf fmt "[%a](%s)" pp_inlines i href
+    | Anchor s -> Format.fprintf fmt "<a id=\"%s\"></a>" s
+    | Linebreak -> Format.fprintf fmt "@\n"
+    (* | Nbsp -> Format.fprintf fmt "\u{00A0}" *)
+    | NoopI -> ()
 
-  and pp_many fmt l = List.iter (pp fmt) l
+  let rec pp_blocks fmt b =
+    match b with
+    | ConcatB (above, below) ->
+        Format.fprintf fmt "%a@\n@\n%a" pp_blocks above pp_blocks below
+    | Block i -> pp_inlines fmt i
+    | CodeBlock s -> Format.fprintf fmt "```@\n%s@\n```" s
+    | Block_separator -> Format.fprintf fmt "---"
+    | List (list_type, l) ->
+        let rec pp_list n l =
+          match l with
+          | [] -> ()
+          | [ x ] -> pp_list_item fmt list_type x n pp_blocks
+          | x :: rest ->
+              pp_list_item fmt list_type x n pp_blocks;
+              Format.fprintf fmt "@\n@\n";
+              pp_list (n + 1) rest
+        in
+        pp_list 0 l
+    | Raw_markup s -> Format.fprintf fmt "%s" s
+    | NoopB -> ()
+    | JoinB (above, below) ->
+        Format.fprintf fmt "%a%a" pp_blocks above pp_blocks below
 end
 
 open Markup
 
-let entity e =
-  match e with "#45" -> escaped "-" | "gt" -> str ">" | s -> str "&%s;" s
+(* let entity e =
+   match e with "#45" -> escaped "-" | "gt" -> str ">" | s -> str "&%s;" s *)
 
-let raw_markup (_ : Raw_markup.t) = noop
-
-let style (style : style) content =
+let style (style : style) i =
   match style with
-  | `Bold -> string "**" ++ (content ++ str "**")
-  | `Italic | `Emphasis -> string "_" ++ (content ++ str "_")
-  | `Superscript -> string "<sup>" ++ content ++ string "</sup>"
-  | `Subscript -> string "<sub>" ++ content ++ string "</sub>"
+  | `Bold -> bold i
+  | `Italic | `Emphasis -> italic i
+  | `Superscript -> superscript i
+  | `Subscript -> subscript i
 
 let make_hashes n = String.make n '#'
 
 type args = { generate_links : bool }
 
-let rec source_code (s : Source.t) nbsp args =
+(*TODO: perhaps the return value of this should be blocks *)
+let rec source_code (s : Source.t) args =
   match s with
-  | [] -> noop
+  | [] -> noopI
   | h :: t -> (
-      let continue s = if s = [] then concat [] else source_code s nbsp args in
+      let continue s = if s = [] then noopI else source_code s args in
       match h with
-      | Source.Elt i -> inline i nbsp args ++ continue t
+      | Source.Elt i -> inline i args ++ continue t
       | Tag (None, s) -> continue s ++ continue t
       | Tag (Some _, s) -> continue s ++ continue t)
 
-and inline (l : Inline.t) nbsp args =
+and inline (l : Inline.t) args =
   match l with
-  | [] -> noop
+  | [] -> noopI
   | i :: rest -> (
-      let continue i = if i = [] then noop else inline i nbsp args in
-      let make_link c s =
-        open_sq_bracket ++ continue c ++ close_sq_bracket ++ open_parenthesis
-        ++ string s ++ close_parenthesis ++ continue rest
-      in
+      let continue i = if i = [] then noopI else inline i args in
       let cond then_clause else_clause =
         if args.generate_links then then_clause else else_clause
       in
@@ -179,57 +234,64 @@ and inline (l : Inline.t) nbsp args =
       | Text s -> (
           match s with
           | "end" (* TODO: | "}" | "]"  *) ->
-              string (make_hashes 6) ++ space ++ nbsp ++ string s
+              noopI
+              (* string (make_hashes 6) ++ space ++  ++ string s *)
+              (*TODO: This should surely be handle right! *)
           | _ ->
               let l, _, rest =
                 Doctree.Take.until l ~classify:(function
-                  | { Inline.desc = Text s; _ } -> Accum [ str "%s" s ]
+                  | { Inline.desc = Text s; _ } -> Accum [ text s ]
                   | _ -> Stop_and_keep)
               in
-              concat l ++ continue rest)
-      | Entity e ->
-          let x = entity e in
-          x ++ continue rest
+              let rec inline' l' =
+                match l' with
+                | [] -> noopI
+                | [ i ] -> i
+                | i :: rest -> i ++ inline' rest
+              in
+              inline' l ++ continue rest)
+      | Entity _ -> noopI
       | Styled (sty, content) -> style sty (continue content) ++ continue rest
-      | Linebreak -> break ++ continue rest
+      | Linebreak -> line_break ++ continue rest
       | Link (href, content) ->
-          cond
-            (make_link content href ++ continue rest)
-            (continue content ++ continue rest)
+          link ~href (inline content args) ++ continue rest
       | InternalLink (Resolved (link, content)) ->
           cond
             (match link.page.parent with
             | Some _ -> continue content ++ continue rest
-            | None -> make_link content (make_hashes 1 ^ link.anchor))
+            | None ->
+                noopI
+                (*TODO: This needs to be handled right! *)
+                (* make_link content (make_hashes 1 ^ link.anchor) *))
             (continue content ++ continue rest)
       | InternalLink (Unresolved content) -> continue content ++ continue rest
       | Source content ->
           cond
-            (source_code content nbsp args ++ continue rest)
-            (backticks
-            ++ source_code content nbsp args
-            ++ backticks ++ continue rest)
-      | Raw_markup t -> raw_markup t ++ continue rest)
+            (source_code content args ++ continue rest)
+            (source_code content args ++ continue rest)
+      | Raw_markup _ -> noopI ++ continue rest)
 
-let rec block (l : Block.t) nbsp args =
+let rec blocks' (bs : blocks list) =
+  match bs with
+  | [] -> noopB
+  | [ b ] -> b
+  | b :: rest -> blocks b (blocks' rest)
+
+let rec block (l : Block.t) args =
   match l with
-  | [] -> noop
+  | [] -> noopB
   | b :: rest -> (
-      let continue r = if r = [] then noop else block r nbsp args in
+      let continue r = if r = [] then noopB else block r args in
       match b.desc with
-      | Inline i -> inline i nbsp args ++ continue rest
-      | Paragraph i -> inline i nbsp args ++ break ++ break ++ continue rest
+      | Inline i -> blocks (paragraph (inline i args)) (continue rest)
+      | Paragraph i -> blocks (paragraph (inline i args)) (continue rest)
       | List (list_typ, l) ->
-          let f n b =
-            let bullet =
-              match list_typ with
-              | Unordered -> escaped "- "
-              | Ordered -> str "%d. " (n + 1)
-            in
-
-            indent 2 (bullet ++ block b nbsp args ++ break)
+          let f b =
+            match list_typ with
+            | Unordered -> unordered_list b
+            | Ordered -> ordered_list b
           in
-          list ~sep:break (List.mapi f l) ++ continue rest
+          blocks (f (List.map (fun b -> block b args) l)) (continue rest)
       | Description _ ->
           let descrs, _, rest =
             Take.until l ~classify:(function
@@ -237,62 +299,42 @@ let rec block (l : Block.t) nbsp args =
               | _ -> Stop_and_keep)
           in
           let f i =
-            let key = inline i.Description.key nbsp args in
-            let def = block i.Description.definition nbsp args in
-            break ++ str "@" ++ key ++ str " : " ++ def ++ break ++ break
+            let key = inline i.Description.key args in
+            let def = block i.Description.definition args in
+            blocks (paragraph (join (join (text "@") key) (text " : "))) def
           in
-          list ~sep:break (List.map f descrs) ++ continue rest
-      | Source content -> source_code content nbsp args ++ continue rest
-      | Verbatim content ->
-          (* TODO: *)
-          space ++ space ++ space ++ space ++ str "%s" content ++ break
-          ++ continue rest
-      | Raw_markup t -> raw_markup t ++ continue rest)
+          blocks (blocks' (List.map f descrs)) (continue rest)
+      | Source content ->
+          blocks (paragraph (source_code content args)) (continue rest)
+      | Verbatim content -> blocks (code_block content) (continue rest)
+      | Raw_markup (_, s) -> blocks (raw_markup s) (continue rest))
 
-let heading { Heading.label; level; title } nbsp args =
-  let title = inline title nbsp args in
-  let level =
-    match level with
-    | 1 -> make_hashes 1
-    | 2 -> make_hashes 2
-    | 3 -> make_hashes 3
-    | 4 -> make_hashes 4
-    | 5 -> make_hashes 5
-    | 6 -> make_hashes 6
-    | _ -> ""
-    (* We can be sure that h6 will never be exceded! *)
-  in
+let heading { Heading.label; level; title } args =
+  let title = inline title args in
   match label with
   | Some _ -> (
-      (* `---` forms a horizontal line below heading, except level one headings (h1)*)
-      let sep = str "---" in
-      let heading' level = string level ++ space ++ title in
       match level with
-      (* This match forms a horizontal line below the heading (for readability reasons),
-         however, we ignore `h1` heading because by default a line is formed below it. *)
-      | "#" -> heading' level
-      | _ -> heading' level ++ break ++ sep)
-  | None -> string level ++ title
+      | 1 -> heading level title
+      | _ -> blocks (heading level title) block_separator)
+  | None -> noopB
+(*TODO: Not sure of what to do here! *)
 
 let inline_subpage = function
   | `Inline | `Open | `Default -> true
   | `Closed -> false
 
-let item_prop nbsp = string (make_hashes 6) ++ space ++ nbsp
+let item_prop = text (make_hashes 6)
 
-let rec documented_src (l : DocumentedSrc.t) nbsp nbsp' args =
+let rec documented_src (l : DocumentedSrc.t) args =
   match l with
-  | [] -> noop
+  | [] -> noopB
   | line :: rest -> (
-      let continue r =
-        if r = [] then noop else documented_src r nbsp nbsp' args
-      in
+      let continue r = if r = [] then noopB else documented_src r args in
       match line with
-      | Code c -> source_code c nbsp' args ++ continue rest
+      | Code c -> joinB (paragraph (source_code c args)) (continue rest)
       | Alternative alt -> (
-          match alt with
-          | Expansion e -> documented_src e.expansion nbsp nbsp' args)
-      | Subpage p -> subpage p.content nbsp args ++ continue rest
+          match alt with Expansion e -> documented_src e.expansion args)
+      | Subpage p -> joinB (subpage p.content args) (continue rest)
       | Documented _ | Nested _ ->
           let lines, _, rest =
             Take.until l ~classify:(function
@@ -303,60 +345,59 @@ let rec documented_src (l : DocumentedSrc.t) nbsp nbsp' args =
               | _ -> Stop_and_keep)
           in
           let f (content, doc, (anchor : Odoc_document.Url.t option)) =
-            let doc =
-              match doc with [] -> noop | doc -> block doc nbsp args
-            in
+            let doc = match doc with [] -> noopB | doc -> block doc args in
             let content =
               match content with
-              | `D code -> inline code nbsp args
-              | `N l -> documented_src l nbsp nbsp' args
+              | `D code -> paragraph (inline code args)
+              | `N l -> documented_src l args
             in
-            let item = item_prop nbsp ++ content ++ break ++ break ++ doc in
+            let item = blocks ((joinB (paragraph item_prop) content)) doc in
             if args.generate_links then
               let anchor =
                 match anchor with Some a -> a.anchor | None -> ""
               in
-              break ++ break ++ anchor' anchor ++ break ++ item
-            else break ++ item
+              (*TODO: A line break might be needed here!*)
+              blocks (paragraph (anchor' anchor)) item
+            else blocks (paragraph line_break) item
           in
-          let l = list ~sep:noop (List.map f lines) in
-          l ++ continue rest)
+          joinB (blocks' (List.map f lines)) (continue rest))
 
-and subpage { title = _; header = _; items; url = _ } nbsp args =
+and subpage { title = _; header = _; items; url = _ } args =
   let content = items in
   let surround body =
-    if content = [] then break else break ++ break ++ body ++ break
+    if content = [] then noopB else body
+    (*TODO: Not sure what to do here! *)
   in
-  surround @@ item nbsp content args
+  surround (item content args)
 
-and item nbsp' (l : Item.t list) args : Markup.t =
+and item (l : Item.t list) args =
   match l with
-  | [] -> noop
+  | [] -> noopB
   | i :: rest -> (
-      let continue r = if r = [] then noop else item nbsp' r args in
+      let continue r = if r = [] then noopB else item r args in
       match i with
-      | Text b -> block b nbsp' args ++ continue rest
-      | Heading h ->
-          break ++ heading h nbsp' args ++ break ++ break ++ continue rest
+      | Text b -> joinB (block b args) (continue rest)
+      | Heading h -> joinB (heading h args) (continue rest)
       | Declaration { attr = _; anchor; content; doc } ->
-          let nbsp'' = nbsp ++ nbsp ++ nbsp ++ nbsp in
-          let decl = documented_src content (nbsp' ++ nbsp'') nbsp' args in
-          let doc = match doc with [] -> noop | doc -> block doc nbsp' args in
-          let item' = item_prop nbsp' ++ decl ++ break ++ break ++ doc in
+          let decl = documented_src content args in
+          let doc = match doc with [] -> noopB | doc -> block doc args in
+          let item' = blocks (joinB (paragraph item_prop) decl) doc in
           if args.generate_links then
             let anchor = match anchor with Some x -> x.anchor | None -> "" in
-            anchor' anchor ++ break ++ item' ++ continue rest
-          else item' ++ continue rest
+            joinB (blocks (paragraph (anchor' anchor)) item') (continue rest)
+          else blocks item' (continue rest)
       | Include
           { attr = _; anchor = _; content = { summary; status; content }; doc }
         ->
           let d =
-            if inline_subpage status then item nbsp' content args
+            if inline_subpage status then item content args
             else
-              let s = source_code summary nbsp' args in
-              match doc with [] -> s | doc -> s ++ block doc nbsp' args
+              let s = source_code summary args in
+              match doc with
+              | [] -> paragraph s
+              | doc -> joinB (paragraph s) (block doc args)
           in
-          d ++ continue rest)
+          joinB d (continue rest))
 
 let on_sub subp =
   match subp with
@@ -366,18 +407,17 @@ let on_sub subp =
 let page { Page.header; items; url; _ } args =
   let header = Shift.compute ~on_sub header in
   let items = Shift.compute ~on_sub items in
-  let inline' l = List.map (fun s -> string s) l |> concat in
-  (*TODO: inline `block'`. *)
-  block'
-    ([ inline' (Link.for_printing url) ]
-    @ [ item (str "") header args ++ item (str "") items args ])
+  let blocks'' l = List.map (fun s -> paragraph (text s)) l |> blocks' in
+  blocks'
+    ([ blocks'' (Link.for_printing url) ]
+    @ [ blocks (item header args) (item items args) ])
 
 let rec subpage subp (args : args) =
   let p = subp.Subpage.content in
   if Link.should_inline p.url then [] else [ render p args ]
 
 and render (p : Page.t) args =
-  let content fmt = Format.fprintf fmt "%a" Markup.pp (page p args) in
+  let content fmt = Format.fprintf fmt "%a" Markup.pp_blocks (page p args) in
   let children =
     Utils.flatmap ~f:(fun sp -> subpage sp args) (Subpages.compute p)
   in

@@ -1,8 +1,12 @@
-Include2X
+Include2
 
-Module  `` Include2.X `` 
+X
 
-Comment about X that should not appear when including X below.
+Comment   about   X   that   should   not   appear   when   including   X   below. 
 
-###### type t = int
+
+
+######  type       t      =   int          
+
+
 

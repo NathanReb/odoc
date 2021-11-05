@@ -1,42 +1,48 @@
 Include2
 
-Module  `` Include2 `` 
-
-###### module X : sig
-
-######     type t = int
 
 
-###### end
-
-Comment about X that should not appear when including X below.
-
-Comment about X that should not appear when including X below.
-
-###### type t = int
-
-###### module Y : sig
-
-######     type t
+######  module          X         :    sig      ######  type       t      =   int          
 
 
-###### end
 
-Top-comment of Y.
+       
 
-###### module Y_include_synopsis : sig
-
-######     type t = Y.t
+Comment   about   X   that   should   not   appear   when   including   X   below. 
 
 
-###### end
 
-The  `` include Y ``  below should have the synopsis from  `` Y `` 's top-comment attached to it.
+Comment   about   X   that   should   not   appear   when   including   X   below. 
 
-###### module Y_include_doc : sig
-
-######     type t = Y.t
+######  type       t      =   int          
 
 
-###### end
+
+######  module          Y         :    sig      ######  type       t             
+
+
+
+       
+
+Top-comment   of   Y. 
+
+
+
+######  module          Y_include_synopsis         :    sig      ######  type       t      =   Y.t             
+
+
+
+       
+
+The   include Y     below   should   have   the   synopsis   from   Y   's   top-comment   attached   to   it. 
+
+
+
+######  module          Y_include_doc         :    sig      ######  type       t      =   Y.t             
+
+
+
+       
+
+
 

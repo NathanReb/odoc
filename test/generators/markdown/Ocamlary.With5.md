@@ -1,18 +1,22 @@
-OcamlaryWith5
+Ocamlary
 
-Module  `` Ocamlary.With5 `` 
-
-###### module type S = sig
-
-######     type t
+With5
 
 
-###### end
 
-###### module N : sig
-
-######     type t
+######  module        type          S         =    sig      ######  type       t             
 
 
-###### end
+
+       
+
+
+
+######  module          N         :    sig      ######  type       t             
+
+
+
+       
+
+
 

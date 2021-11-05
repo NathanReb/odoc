@@ -1,22 +1,22 @@
-NestedX
+Nested
 
-Module  `` Nested.X `` 
+X
 
-This is module X.
+This   is   module   X. 
 
-Some additional comments.
-
-
-# Type
-
-###### type t
-
-Some type.
+Some   additional   comments. 
 
 
-# Values
 
-###### val x : t
+# Type ######  type       t             
 
-The value of x.
+Some   type. 
+
+
+
+# Values ######  val       x   :   t       
+
+The   value   of   x. 
+
+
 

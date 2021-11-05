@@ -1,11 +1,14 @@
-OcamlaryDoubleInclude3
+Ocamlary
 
-Module  `` Ocamlary.DoubleInclude3 `` 
-
-###### module DoubleInclude2 : sig
-
-######     type double_include
+DoubleInclude3
 
 
-###### end
+
+######  module          DoubleInclude2         :    sig      ######  type       double_include             
+
+
+
+       
+
+
 

@@ -1,10 +1,18 @@
-OcamlaryCollectionModuleInnerModuleAInnerModuleA'
+Ocamlary
 
-Module  `` InnerModuleA.InnerModuleA' `` 
+CollectionModule
 
-This comment is for  `` InnerModuleA' `` .
+InnerModuleA
 
-###### type t = (unit, unit) a_function
+InnerModuleA'
 
-This comment is for  `` t `` .
+This   comment   is   for   InnerModuleA'   . 
+
+
+
+######  type       t      =     (  unit  ,   unit  )       a_function               
+
+This   comment   is   for   t   . 
+
+
 

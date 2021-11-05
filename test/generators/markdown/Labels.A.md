@@ -1,7 +1,7 @@
-LabelsA
+Labels
 
-Module  `` Labels.A `` 
+A
 
 
-# Attached to module
 
+# Attached   to   module 

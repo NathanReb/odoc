@@ -1,33 +1,34 @@
-OcamlaryDep1
+Ocamlary
 
-Module  `` Ocamlary.Dep1 `` 
-
-###### module type S = sig
-
-######     class  c : object
-
-######         method m : int
+Dep1
 
 
-######     end
+
+######  module        type          S         =    sig      ######  class              c         :    object      ######  method       m   :   int    
 
 
-###### end
 
-###### module X : sig
-
-######     module Y : sig
-
-######         class  c : object
-
-######             method m : int
+       
 
 
-######         end
+
+       
 
 
-######     end
+
+######  module          X         :    sig      ######  module          Y         :    sig      ######  class              c         :    object      ######  method       m   :   int    
 
 
-###### end
+
+       
+
+
+
+       
+
+
+
+       
+
+
 

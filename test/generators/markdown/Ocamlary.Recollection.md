@@ -1,105 +1,118 @@
-OcamlaryRecollection
+Ocamlary
 
-Module  `` Ocamlary.Recollection `` 
-
-
-# Parameters
-
-###### module C : sig
-
-This comment is for  `` CollectionModule `` .
-
-######     type collection
-
-This comment is for  `` collection `` .
-
-######     type element
-
-######     module InnerModuleA : sig
-
-######         type t = collection
-
-This comment is for  `` t `` .
-
-######         module InnerModuleA' : sig
-
-######             type t = (unit, unit) a_function
-
-This comment is for  `` t `` .
+Recollection
 
 
-######         end
 
-This comment is for  `` InnerModuleA' `` .
+# Parameters ######  module          C         :    sig      This   comment   is   for   CollectionModule   . 
 
-######         module type InnerModuleTypeA' = sig
+######  type       collection             
 
-######             type t = InnerModuleA'.t
-
-This comment is for  `` t `` .
+This   comment   is   for   collection   . 
 
 
-######         end
 
-This comment is for  `` InnerModuleTypeA' `` .
-
-
-######     end
-
-This comment is for  `` InnerModuleA `` .
-
-######     module type InnerModuleTypeA = InnerModuleA.InnerModuleTypeA'
-
-This comment is for  `` InnerModuleTypeA `` .
+######  type       element             
 
 
-###### end
+
+######  module          InnerModuleA         :    sig      ######  type       t      =   collection             
+
+This   comment   is   for   t   . 
 
 
-# Signature
 
-This comment is for  `` CollectionModule `` .
+######  module          InnerModuleA'         :    sig      ######  type       t      =     (  unit  ,   unit  )       a_function               
 
-###### type collection = C.element list
-
-This comment is for  `` collection `` .
-
-###### type element = C.collection
-
-###### module InnerModuleA : sig
-
-######     type t = collection
-
-This comment is for  `` t `` .
-
-######     module InnerModuleA' : sig
-
-######         type t = (unit, unit) a_function
-
-This comment is for  `` t `` .
+This   comment   is   for   t   . 
 
 
-######     end
 
-This comment is for  `` InnerModuleA' `` .
+       
 
-######     module type InnerModuleTypeA' = sig
-
-######         type t = InnerModuleA'.t
-
-This comment is for  `` t `` .
+This   comment   is   for   InnerModuleA'   . 
 
 
-######     end
 
-This comment is for  `` InnerModuleTypeA' `` .
+######  module        type          InnerModuleTypeA'         =    sig      ######  type       t      =   InnerModuleA'.t             
+
+This   comment   is   for   t   . 
 
 
-###### end
 
-This comment is for  `` InnerModuleA `` .
+       
 
-###### module type InnerModuleTypeA = InnerModuleA.InnerModuleTypeA'
+This   comment   is   for   InnerModuleTypeA'   . 
 
-This comment is for  `` InnerModuleTypeA `` .
+
+
+       
+
+This   comment   is   for   InnerModuleA   . 
+
+
+
+######  module        type          InnerModuleTypeA      =   InnerModuleA.InnerModuleTypeA'          
+
+This   comment   is   for   InnerModuleTypeA   . 
+
+
+
+       
+
+
+
+# Signature This   comment   is   for   CollectionModule   . 
+
+######  type       collection      =    C.element        list            
+
+This   comment   is   for   collection   . 
+
+
+
+######  type       element      =   C.collection             
+
+
+
+######  module          InnerModuleA         :    sig      ######  type       t      =   collection             
+
+This   comment   is   for   t   . 
+
+
+
+######  module          InnerModuleA'         :    sig      ######  type       t      =     (  unit  ,   unit  )       a_function               
+
+This   comment   is   for   t   . 
+
+
+
+       
+
+This   comment   is   for   InnerModuleA'   . 
+
+
+
+######  module        type          InnerModuleTypeA'         =    sig      ######  type       t      =   InnerModuleA'.t             
+
+This   comment   is   for   t   . 
+
+
+
+       
+
+This   comment   is   for   InnerModuleTypeA'   . 
+
+
+
+       
+
+This   comment   is   for   InnerModuleA   . 
+
+
+
+######  module        type          InnerModuleTypeA      =   InnerModuleA.InnerModuleTypeA'          
+
+This   comment   is   for   InnerModuleTypeA   . 
+
+
 

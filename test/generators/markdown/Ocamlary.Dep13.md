@@ -1,11 +1,14 @@
-OcamlaryDep13
+Ocamlary
 
-Module  `` Ocamlary.Dep13 `` 
-
-###### class  c : object
-
-######     method m : int
+Dep13
 
 
-###### end
+
+######  class              c         :    object      ######  method       m   :   int    
+
+
+
+       
+
+
 

@@ -1,6 +1,10 @@
-OcamlaryM
+Ocamlary
 
-Module  `` Ocamlary.M `` 
+M
 
-###### type t
+
+
+######  type       t             
+
+
 

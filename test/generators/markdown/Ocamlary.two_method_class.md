@@ -1,8 +1,14 @@
-Ocamlarytwo_method_class
+Ocamlary
 
-Class  `` Ocamlary.two_method_class `` 
+two_method_class
 
-###### method one : one_method_class
 
-###### method undo : unit
+
+######  method       one   :   one_method_class       
+
+
+
+######  method       undo   :   unit    
+
+
 

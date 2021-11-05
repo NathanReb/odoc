@@ -1,71 +1,83 @@
 Recent_impl
 
-Module  `` Recent_impl `` 
-
-###### module Foo : sig
-
-######     module A : sig
-
-######         type t = 
-######             | A
 
 
+######  module          Foo         :    sig      ######  module          A         :    sig      ######  type       t         =     
 
 
-######     end
+###### |       A      
 
-######     module B : sig
-
-######         type t = 
-######             | B
+      
 
 
 
-
-######     end
-
-
-###### end
-
-###### module B : sig
-
-######     type t = 
-######         | B
+       
 
 
 
-
-###### end
-
-###### type u
-
-###### module type S = sig
-
-######     module F : sig
+######  module          B         :    sig      ######  type       t         =     
 
 
-## Parameters
----
+###### |       B      
 
-######         module _ : sig
-######         end
+      
 
 
-## Signature
----
 
-######         type t
+       
 
 
-######     end
 
-######     module X : sig
-######     end
-
-######     val f : F(X).t
+       
 
 
-###### end
 
-###### module B' = Foo.B
+######  module          B         :    sig      ######  type       t         =     
+
+
+###### |       B      
+
+      
+
+
+
+       
+
+
+
+######  type       u             
+
+
+
+######  module        type          S         =    sig      ######  module          F         :    sig      ## Parameters 
+
+---######  module          _         :    sig             
+
+
+
+## Signature 
+
+---######  type       t             
+
+
+
+       
+
+
+
+######  module          X         :    sig             
+
+
+
+######  val       f   :   F(X).t       
+
+
+
+       
+
+
+
+######  module          B'      =   Foo.B          
+
+
 

@@ -1,20 +1,24 @@
-OcamlaryWith10
+Ocamlary
 
-Module  `` Ocamlary.With10 `` 
-
-###### module type T = sig
-
-######     module M : sig
-
-######         module type S
+With10
 
 
-######     end
 
-######     module N : M.S
+######  module        type          T         =    sig      ######  module          M         :    sig      ######  module        type          S          
 
 
-###### end
 
- `` With10.T ``  is a submodule type.
+       
+
+
+
+######  module          N      :   M.S          
+
+
+
+       
+
+With10.T      is   a   submodule   type. 
+
+
 

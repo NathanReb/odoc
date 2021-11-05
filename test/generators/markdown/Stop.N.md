@@ -1,6 +1,10 @@
-StopN
+Stop
 
-Module  `` Stop.N `` 
+N
 
-###### val quux : int
+
+
+######  val       quux   :   int    
+
+
 

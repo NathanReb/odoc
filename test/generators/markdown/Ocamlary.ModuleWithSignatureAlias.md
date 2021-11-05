@@ -1,11 +1,14 @@
-OcamlaryModuleWithSignatureAlias
+Ocamlary
 
-Module  `` Ocamlary.ModuleWithSignatureAlias `` 
+ModuleWithSignatureAlias
 
-A plain module with an alias signature
+A   plain   module   with   an   alias   signature 
+
+@deprecated  : 
+
+I   don't   like   this   element   any   more. 
 
 
-@deprecated : I don't like this element any more.
 
 
 

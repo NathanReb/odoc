@@ -1,6 +1,12 @@
-OcamlaryAliasesP2
+Ocamlary
 
-Module  `` Aliases.P2 `` 
+Aliases
 
-###### module Z = Z
+P2
+
+
+
+######  module          Z      =   Z          
+
+
 

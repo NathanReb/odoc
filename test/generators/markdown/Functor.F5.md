@@ -1,12 +1,10 @@
-FunctorF5
+Functor
 
-Module  `` Functor.F5 `` 
-
-
-# Parameters
+F5
 
 
-# Signature
 
-###### type t
+# Parameters # Signature ######  type       t             
+
+
 

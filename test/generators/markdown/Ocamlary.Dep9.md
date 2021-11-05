@@ -1,19 +1,18 @@
-OcamlaryDep9
+Ocamlary
 
-Module  `` Ocamlary.Dep9 `` 
-
-
-# Parameters
-
-###### module X : sig
-
-######     module type T
+Dep9
 
 
-###### end
+
+# Parameters ######  module          X         :    sig      ######  module        type          T          
 
 
-# Signature
 
-###### module type T = X.T
+       
+
+
+
+# Signature ######  module        type          T      =   X.T          
+
+
 

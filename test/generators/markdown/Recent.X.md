@@ -1,12 +1,22 @@
-RecentX
+Recent
 
-Module  `` Recent.X `` 
+X
 
-###### module L := Z.Y
 
-###### type t = int Z.Y.X.t
 
-###### type u := int
+######  module       L   :=   Z.Y       
 
-###### type v = u Z.Y.X.t
+
+
+######  type       t      =    int     Z.Y.X.t               
+
+
+
+######  type       u      :=   int          
+
+
+
+######  type       v      =    u        Z.Y.X.t               
+
+
 

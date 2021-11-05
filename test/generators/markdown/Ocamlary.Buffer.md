@@ -1,8 +1,12 @@
-OcamlaryBuffer
+Ocamlary
 
-Module  `` Ocamlary.Buffer `` 
+Buffer
 
-References are resolved after everything, so  `` {!Buffer.t} ``  won't resolve.
+References   are   resolved   after   everything,   so   {!Buffer.t}     won't   resolve. 
 
-###### val f : int -> unit
+
+
+######  val       f   :    int                   unit    
+
+
 

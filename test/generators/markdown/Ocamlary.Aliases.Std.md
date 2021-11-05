@@ -1,14 +1,28 @@
-OcamlaryAliasesStd
+Ocamlary
 
-Module  `` Aliases.Std `` 
+Aliases
 
-###### module A = Foo.A
+Std
 
-###### module B = Foo.B
 
-###### module C = Foo.C
 
-###### module D = Foo.D
+######  module          A      =   Foo.A          
 
-###### module E = Foo.E
+
+
+######  module          B      =   Foo.B          
+
+
+
+######  module          C      =   Foo.C          
+
+
+
+######  module          D      =   Foo.D          
+
+
+
+######  module          E      =   Foo.E          
+
+
 

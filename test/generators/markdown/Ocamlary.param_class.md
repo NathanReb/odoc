@@ -1,6 +1,10 @@
-Ocamlaryparam_class
+Ocamlary
 
-Class  `` Ocamlary.param_class `` 
+param_class
 
-###### method v : 'a
+
+
+######  method       v   :    'a      
+
+
 

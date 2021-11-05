@@ -1,126 +1,104 @@
 Functor
 
-Module  `` Functor `` 
 
-###### module type S = sig
 
-######     type t
+######  module        type          S         =    sig      ######  type       t             
 
 
-###### end
 
-###### module type S1 = sig
+       
 
 
-## Parameters
----
 
-######     module _ : sig
+######  module        type          S1         =    sig      ## Parameters 
 
-######         type t
+---######  module          _         :    sig      ######  type       t             
 
 
-######     end
 
+       
 
-## Signature
----
 
-######     type t
 
+## Signature 
 
-###### end
+---######  type       t             
 
-###### module F1 : sig
 
 
-# Parameters
+       
 
-######     module Arg : sig
 
-######         type t
 
+######  module          F1         :    sig      # Parameters ######  module          Arg         :    sig      ######  type       t             
 
-######     end
 
 
-# Signature
+       
 
-######     type t
 
 
-###### end
+# Signature ######  type       t             
 
-###### module F2 : sig
 
 
-# Parameters
+       
 
-######     module Arg : sig
 
-######         type t
 
+######  module          F2         :    sig      # Parameters ######  module          Arg         :    sig      ######  type       t             
 
-######     end
 
 
-# Signature
+       
 
-######     type t = Arg.t
 
 
-###### end
+# Signature ######  type       t      =   Arg.t             
 
-###### module F3 : sig
 
 
-# Parameters
+       
 
-######     module Arg : sig
 
-######         type t
 
+######  module          F3         :    sig      # Parameters ######  module          Arg         :    sig      ######  type       t             
 
-######     end
 
 
-# Signature
+       
 
-######     type t = Arg.t
 
 
-###### end
+# Signature ######  type       t      =   Arg.t             
 
-###### module F4 : sig
 
 
-# Parameters
+       
 
-######     module Arg : sig
 
-######         type t
 
+######  module          F4         :    sig      # Parameters ######  module          Arg         :    sig      ######  type       t             
 
-######     end
 
 
-# Signature
+       
 
-######     type t
 
 
-###### end
+# Signature ######  type       t             
 
-###### module F5 : sig
 
 
-# Parameters
+       
 
 
-# Signature
 
-######     type t
+######  module          F5         :    sig      # Parameters # Signature ######  type       t             
 
 
-###### end
+
+       
+
+
 

@@ -1,38 +1,42 @@
-OcamlaryDep5
+Ocamlary
 
-Module  `` Ocamlary.Dep5 `` 
-
-
-# Parameters
-
-###### module Arg : sig
-
-######     module type T
-
-######     module type S = sig
-
-######         module X : T
-
-######         module Y : sig
-######         end
+Dep5
 
 
-######     end
 
-######     module X : T
-
-
-###### end
+# Parameters ######  module          Arg         :    sig      ######  module        type          T          
 
 
-# Signature
 
-###### module Z : sig
-
-######     module X : Arg.T
-
-######     module Y = Dep3
+######  module        type          S         =    sig      ######  module          X      :   T          
 
 
-###### end
+
+######  module          Y         :    sig             
+
+
+
+       
+
+
+
+######  module          X      :   T          
+
+
+
+       
+
+
+
+# Signature ######  module          Z         :    sig      ######  module          X      :   Arg.T          
+
+
+
+######  module          Y      =   Dep3          
+
+
+
+       
+
+
 

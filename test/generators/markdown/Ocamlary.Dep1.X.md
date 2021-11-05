@@ -1,16 +1,20 @@
-OcamlaryDep1X
+Ocamlary
 
-Module  `` Dep1.X `` 
+Dep1
 
-###### module Y : sig
-
-######     class  c : object
-
-######         method m : int
+X
 
 
-######     end
+
+######  module          Y         :    sig      ######  class              c         :    object      ######  method       m   :   int    
 
 
-###### end
+
+       
+
+
+
+       
+
+
 

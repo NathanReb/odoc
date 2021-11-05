@@ -1,6 +1,10 @@
-OcamlaryIncludedA
+Ocamlary
 
-Module  `` Ocamlary.IncludedA `` 
+IncludedA
 
-###### type t
+
+
+######  type       t             
+
+
 

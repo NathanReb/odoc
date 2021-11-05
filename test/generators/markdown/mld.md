@@ -1,43 +1,34 @@
 mld
 
- Mld Page
----
+ Mld   Page 
 
-This is an  `` .mld ``  file. It doesn't have an auto-generated title, like modules and other pages generated fully by odoc do.
+---This   is   an   .mld     file.   It   doesn't   have   an   auto-generated   title,   like   modules   and   other   pages   generated   fully   by   odoc   do. 
 
-It will have a TOC generated from section headings.
-
-
-# Section
-
-This is a section.
-
-Another paragraph in section.
+It   will   have   a   TOC   generated   from   section   headings. 
 
 
-# Another section
 
-This is another section.
+# Section This   is   a   section. 
 
-Another paragraph in section 2.
+Another   paragraph   in   section. 
 
+# Another   section This   is   another   section. 
 
-## Subsection
----
+Another   paragraph   in   section   2. 
 
-This is a subsection.
+## Subsection 
 
-Another paragraph in subsection.
+---This   is   a   subsection. 
 
-Yet another paragraph in subsection.
+Another   paragraph   in   subsection. 
 
+Yet   another   paragraph   in   subsection. 
 
-## Another Subsection
----
+## Another   Subsection 
 
-This is another subsection.
+---This   is   another   subsection. 
 
-Another paragraph in subsection 2.
+Another   paragraph   in   subsection   2. 
 
-Yet another paragraph in subsection 2.
+Yet   another   paragraph   in   subsection   2. 
 

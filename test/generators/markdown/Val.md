@@ -1,14 +1,20 @@
 Val
 
-Module  `` Val `` 
 
-###### val documented : unit
 
-Foo.
+######  val       documented   :   unit    
 
-###### val undocumented : unit
+Foo. 
 
-###### val documented_above : unit
 
-Bar.
+
+######  val       undocumented   :   unit    
+
+
+
+######  val       documented_above   :   unit    
+
+Bar. 
+
+
 

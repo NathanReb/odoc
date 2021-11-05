@@ -1,9 +1,17 @@
-Recent_implFooA
+Recent_impl
 
-Module  `` Foo.A `` 
+Foo
 
-###### type t = 
-######     | A
+A
+
+
+
+######  type       t         =     
+
+
+###### |       A      
+
+      
 
 
 

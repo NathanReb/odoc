@@ -1,39 +1,46 @@
-OcamlaryDep6
+Ocamlary
 
-Module  `` Ocamlary.Dep6 `` 
-
-###### module type S = sig
-
-######     type d
+Dep6
 
 
-###### end
 
-###### module type T = sig
-
-######     module type R = S
-
-######     module Y : sig
-
-######         type d
+######  module        type          S         =    sig      ######  type       d             
 
 
-######     end
+
+       
 
 
-###### end
 
-###### module X : sig
-
-######     module type R = S
-
-######     module Y : sig
-
-######         type d
+######  module        type          T         =    sig      ######  module        type          R      =   S          
 
 
-######     end
+
+######  module          Y         :    sig      ######  type       d             
 
 
-###### end
+
+       
+
+
+
+       
+
+
+
+######  module          X         :    sig      ######  module        type          R      =   S          
+
+
+
+######  module          Y         :    sig      ######  type       d             
+
+
+
+       
+
+
+
+       
+
+
 

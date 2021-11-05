@@ -1,30 +1,34 @@
-Functor2X
+Functor2
 
-Module  `` Functor2.X `` 
-
-
-# Parameters
-
-###### module Y : sig
-
-######     type t
+X
 
 
-###### end
 
-###### module Z : sig
-
-######     type t
+# Parameters ######  module          Y         :    sig      ######  type       t             
 
 
-###### end
+
+       
 
 
-# Signature
 
-###### type y_t = Y.t
+######  module          Z         :    sig      ######  type       t             
 
-###### type z_t = Z.t
 
-###### type x_t = y_t
+
+       
+
+
+
+# Signature ######  type       y_t      =   Y.t             
+
+
+
+######  type       z_t      =   Z.t             
+
+
+
+######  type       x_t      =   y_t             
+
+
 

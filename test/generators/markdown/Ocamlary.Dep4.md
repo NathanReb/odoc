@@ -1,33 +1,38 @@
-OcamlaryDep4
+Ocamlary
 
-Module  `` Ocamlary.Dep4 `` 
-
-###### module type T = sig
-
-######     type b
+Dep4
 
 
-###### end
 
-###### module type S = sig
-
-######     module X : sig
-
-######         type b
+######  module        type          T         =    sig      ######  type       b             
 
 
-######     end
 
-######     module Y : sig
-######     end
+       
 
 
-###### end
 
-###### module X : sig
-
-######     type b
+######  module        type          S         =    sig      ######  module          X         :    sig      ######  type       b             
 
 
-###### end
+
+       
+
+
+
+######  module          Y         :    sig             
+
+
+
+       
+
+
+
+######  module          X         :    sig      ######  type       b             
+
+
+
+       
+
+
 
